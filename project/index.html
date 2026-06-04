@@ -6,12 +6,51 @@
 <title>Искусственный интеллект для карьеры 2026 — Upgrade</title>
 <meta name="description" content="Онлайн-курс Upgrade: за 6 недель освоите ИИ-инструменты для карьеры, работы, контента и бизнеса. Практика, поддержка наставника и удостоверение о повышении квалификации." />
 <meta name="theme-color" content="#0B0D0A" />
+<link rel="canonical" href="https://ai-career-ilhom-sultanovs-projects.vercel.app/" />
 <meta property="og:title" content="Искусственный интеллект для карьеры 2026 — Upgrade" />
 <meta property="og:description" content="Практический курс по ИИ-инструментам для специалистов, руководителей, фрилансеров и предпринимателей." />
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="ru_RU" />
-<meta property="og:image" content="assets/speakers.jpg" />
+<meta property="og:url" content="https://ai-career-ilhom-sultanovs-projects.vercel.app/" />
+<meta property="og:site_name" content="Upgrade" />
+<meta property="og:image" content="https://ai-career-ilhom-sultanovs-projects.vercel.app/assets/speakers.jpg" />
+<meta property="og:image:alt" content="Спикеры курса «Искусственный интеллект для карьеры 2026»" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Искусственный интеллект для карьеры 2026 — Upgrade" />
+<meta name="twitter:description" content="За 6 недель освоите ИИ-инструменты для карьеры. Практика, наставник, удостоверение в госреестре." />
+<meta name="twitter:image" content="https://ai-career-ilhom-sultanovs-projects.vercel.app/assets/speakers.jpg" />
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "Искусственный интеллект для карьеры 2026",
+  "description": "Онлайн-курс Upgrade: за 6 недель освоите ИИ-инструменты для карьеры, работы, контента и бизнеса. Практика, поддержка наставника и удостоверение о повышении квалификации с внесением в государственный реестр.",
+  "inLanguage": "ru",
+  "url": "https://ai-career-ilhom-sultanovs-projects.vercel.app/",
+  "provider": {
+    "@type": "Organization",
+    "name": "Upgrade",
+    "url": "https://upgrade-agency.ru"
+  },
+  "hasCourseInstance": [
+    {
+      "@type": "CourseInstance",
+      "name": "Групповой формат",
+      "courseMode": "online",
+      "courseWorkload": "P6W",
+      "offers": { "@type": "Offer", "price": "70000", "priceCurrency": "RUB", "category": "Групповой формат" }
+    },
+    {
+      "@type": "CourseInstance",
+      "name": "Личный формат (один на один)",
+      "courseMode": "online",
+      "courseWorkload": "P2M",
+      "offers": { "@type": "Offer", "price": "200000", "priceCurrency": "RUB", "category": "Личный формат" }
+    }
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700;800;900&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
@@ -83,8 +122,11 @@ body.menu-open { overflow: hidden; }
 .hero__stats { display: flex; gap: clamp(20px,3vw,44px); margin-top: 52px; flex-wrap: wrap; }
 .stat .n { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 3vw, 44px); line-height: 1; }
 .stat .l { color: var(--ink-dim); font-size: 14px; margin-top: 8px; max-width: 150px; }
+@media (max-width: 480px) {
+  /* "Искусственный" is an unbreakable long word — scale it to fit narrow screens */
+  .hero h1.display { font-size: clamp(20px, 6.8vw, 40px); letter-spacing: -0.05em; }
+}
 @media (max-width: 420px) {
-  h1.display { font-size: 34px; }
   .hero__actions .btn { width: 100%; justify-content: center; white-space: normal; text-align: center; }
 }
 
