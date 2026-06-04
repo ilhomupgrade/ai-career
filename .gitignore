@@ -2,6 +2,7 @@
 project/.DS_Store
 .vercel/
 project/.vercel/
+project/.gitignore
 .playwright-mcp/
 ai-career-*.png
 node_modules/
