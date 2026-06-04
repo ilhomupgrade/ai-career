@@ -74,29 +74,15 @@ body.menu-open { overflow: hidden; }
   position: absolute; inset: 0; pointer-events: none;
   background: radial-gradient(60% 50% at 78% 8%, rgba(199,249,46,.16), transparent 70%);
 }
-.hero__grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(32px, 4vw, 64px); align-items: center; position: relative; }
-.hero__grid > * { min-width: 0; }
+.hero__grid { display: block; position: relative; }
+.hero__copy { max-width: 980px; }
 .hero h1 { margin: 26px 0 28px; }
 .hero h1 em { font-style: normal; color: var(--lime); }
-.hero__lead { color: var(--ink-dim); font-size: clamp(17px, 1.5vw, 21px); max-width: 540px; margin-bottom: 36px; }
+.hero__lead { color: var(--ink-dim); font-size: clamp(17px, 1.5vw, 21px); max-width: 640px; margin-bottom: 36px; }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
 .hero__stats { display: flex; gap: clamp(20px,3vw,44px); margin-top: 52px; flex-wrap: wrap; }
 .stat .n { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 3vw, 44px); line-height: 1; }
 .stat .l { color: var(--ink-dim); font-size: 14px; margin-top: 8px; max-width: 150px; }
-.hero__visual { position: relative; }
-.hero__visual img { width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center; border-radius: 22px; border: 1px solid var(--line); }
-.hero__badge {
-  position: absolute; left: -22px; bottom: 30px;
-  background: var(--lime); color: var(--lime-ink);
-  font-family: var(--display); font-weight: 800; font-size: 15px;
-  padding: 16px 22px; border-radius: 16px; line-height: 1.1; max-width: 200px;
-  box-shadow: 0 24px 60px -20px rgba(199,249,46,.5);
-}
-@media (max-width: 860px) {
-  .hero__grid { grid-template-columns: 1fr; }
-  .hero__visual { order: -1; max-width: 420px; }
-  .hero__badge { left: auto; right: 16px; }
-}
 @media (max-width: 420px) {
   h1.display { font-size: 34px; }
   .hero__actions .btn { width: 100%; justify-content: center; white-space: normal; text-align: center; }
@@ -394,10 +380,6 @@ body.menu-open { overflow: hidden; }
         <div class="stat"><div class="n">40+</div><div class="l">проведённых воркшопов</div></div>
         <div class="stat"><div class="n">100+</div><div class="l">готовых промптов в подарок</div></div>
       </div>
-    </div>
-    <div class="hero__visual reveal" data-d="2">
-      <img src="assets/speakers.jpg" width="1106" height="1144" alt="Спикеры курса Upgrade по искусственному интеллекту" fetchpriority="high" />
-      <div class="hero__badge">Удостоверение в гос. реестре</div>
     </div>
   </div>
 </section>
