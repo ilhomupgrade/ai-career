@@ -1,0 +1,8 @@
+.DS_Store
+project/.DS_Store
+.vercel/
+project/.vercel/
+.playwright-mcp/
+ai-career-*.png
+node_modules/
+*.log

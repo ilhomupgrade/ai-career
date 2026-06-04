@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Искусственный интеллект для карьеры 2026 — Upgrade</title>
+<meta name="description" content="Онлайн-курс Upgrade: за 6 недель освоите ИИ-инструменты для карьеры, работы, контента и бизнеса. Практика, поддержка наставника и удостоверение о повышении квалификации." />
+<meta name="theme-color" content="#0B0D0A" />
+<meta property="og:title" content="Искусственный интеллект для карьеры 2026 — Upgrade" />
+<meta property="og:description" content="Практический курс по ИИ-инструментам для специалистов, руководителей, фрилансеров и предпринимателей." />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="ru_RU" />
+<meta property="og:image" content="assets/speakers.jpg" />
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700;800;900&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<script>document.documentElement.classList.add('js');</script>
+<style>
+/* ============ Page-specific layout ============ */
+
+/* Announcement strip */
+.strip {
+  background: var(--lime);
+  color: var(--lime-ink);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+  text-align: center;
+  padding: 9px 16px;
+  position: relative;
+  z-index: 60;
+}
+.strip b { font-weight: 800; }
+
+/* Nav */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(11,13,10,.72);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line-soft);
+}
+.nav__inner { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+.logo { font-family: var(--display); font-weight: 800; font-size: 21px; letter-spacing: -0.04em; display: flex; align-items: center; gap: 9px; }
+.logo .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--lime); display: inline-block; }
+.nav__links { display: flex; gap: 34px; }
+.nav__links a { font-size: 15px; font-weight: 500; color: var(--ink-dim); transition: color .2s; }
+.nav__links a:hover { color: var(--ink); }
+.nav__cta { display: flex; align-items: center; gap: 18px; }
+@media (max-width: 1080px) { .nav__links { display: none; } }
+@media (max-width: 560px) { .nav__cta .btn { padding: 12px 18px; font-size: 14px; } }
+
+/* Burger */
+.burger { display: none; flex-direction: column; gap: 5px; width: 44px; height: 44px; align-items: center; justify-content: center; border-radius: 12px; border: 1px solid var(--line); }
+.burger span { width: 20px; height: 2px; background: var(--ink); border-radius: 2px; transition: transform .3s, opacity .3s; }
+.burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity: 0; }
+.burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+@media (max-width: 1080px) { .burger { display: flex; } }
+
+/* Mobile menu */
+.mmenu { position: fixed; inset: 0; z-index: 45; background: rgba(11,13,10,.97); backdrop-filter: blur(20px); display: flex; flex-direction: column; justify-content: center; gap: 8px; padding: 0 var(--gutter); opacity: 0; visibility: hidden; transform: translateY(-10px); transition: opacity .3s, transform .3s, visibility .3s; }
+.mmenu.open { opacity: 1; visibility: visible; transform: none; }
+.mmenu__links { display: flex; flex-direction: column; gap: 4px; margin-bottom: 30px; }
+.mmenu__links a { font-family: var(--display); font-weight: 700; font-size: clamp(28px, 8vw, 40px); letter-spacing: -.03em; padding: 10px 0; color: var(--ink); transition: color .2s; }
+.mmenu__links a:hover, .mmenu__links a:active { color: var(--lime); }
+.mmenu__cta { align-self: flex-start; }
+body.menu-open { overflow: hidden; }
+
+/* Hero */
+.hero { padding-top: clamp(56px, 8vw, 110px); padding-bottom: clamp(56px, 7vw, 96px); position: relative; overflow: hidden; }
+.hero__glow {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(60% 50% at 78% 8%, rgba(199,249,46,.16), transparent 70%);
+}
+.hero__grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(32px, 4vw, 64px); align-items: center; position: relative; }
+.hero__grid > * { min-width: 0; }
+.hero h1 { margin: 26px 0 28px; }
+.hero h1 em { font-style: normal; color: var(--lime); }
+.hero__lead { color: var(--ink-dim); font-size: clamp(17px, 1.5vw, 21px); max-width: 540px; margin-bottom: 36px; }
+.hero__actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+.hero__stats { display: flex; gap: clamp(20px,3vw,44px); margin-top: 52px; flex-wrap: wrap; }
+.stat .n { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 3vw, 44px); line-height: 1; }
+.stat .l { color: var(--ink-dim); font-size: 14px; margin-top: 8px; max-width: 150px; }
+.hero__visual { position: relative; }
+.hero__visual img { width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center; border-radius: 22px; border: 1px solid var(--line); }
+.hero__badge {
+  position: absolute; left: -22px; bottom: 30px;
+  background: var(--lime); color: var(--lime-ink);
+  font-family: var(--display); font-weight: 800; font-size: 15px;
+  padding: 16px 22px; border-radius: 16px; line-height: 1.1; max-width: 200px;
+  box-shadow: 0 24px 60px -20px rgba(199,249,46,.5);
+}
+@media (max-width: 860px) {
+  .hero__grid { grid-template-columns: 1fr; }
+  .hero__visual { order: -1; max-width: 420px; }
+  .hero__badge { left: auto; right: 16px; }
+}
+@media (max-width: 420px) {
+  h1.display { font-size: 34px; }
+  .hero__actions .btn { width: 100%; justify-content: center; white-space: normal; text-align: center; }
+}
+
+/* Feature card with index */
+.fcard .idx { font-family: var(--display); font-weight: 800; font-size: 18px; color: var(--lime); display: block; margin-bottom: 26px; }
+.fcard h3 { font-family: var(--display); font-weight: 700; font-size: 22px; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 14px; }
+.fcard p { color: var(--ink-dim); font-size: 16px; }
+.fcard::after {
+  content: ""; position: absolute; right: -40px; top: -40px; width: 120px; height: 120px;
+  background: radial-gradient(circle, rgba(199,249,46,.14), transparent 70%);
+  opacity: 0; transition: opacity .4s;
+}
+.fcard:hover::after { opacity: 1; }
+
+/* About */
+.about__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(36px, 5vw, 80px); align-items: start; }
+.about p { color: var(--ink-dim); font-size: clamp(17px,1.4vw,20px); margin-bottom: 22px; }
+.about p strong { color: var(--ink); font-weight: 600; }
+.about__points { display: flex; flex-direction: column; gap: 0; }
+.about__points li {
+  list-style: none; display: flex; gap: 20px; align-items: baseline;
+  padding: 26px 0; border-top: 1px solid var(--line);
+}
+.about__points li:last-child { border-bottom: 1px solid var(--line); }
+.about__points .yr { font-family: var(--display); font-weight: 800; color: var(--lime); font-size: 15px; min-width: 54px; }
+.about__points .tx { font-size: 17px; }
+@media (max-width: 760px){ .about__grid{ grid-template-columns: 1fr; } }
+
+/* Audience */
+.aud { padding: clamp(28px,2.6vw,40px); display: flex; flex-direction: column; }
+.aud h3 { font-family: var(--display); font-weight: 700; font-size: 21px; letter-spacing: -0.02em; margin-bottom: 14px; }
+.aud p { color: var(--ink-dim); font-size: 16px; }
+.aud .tag { font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--lime); margin-bottom: 18px; }
+
+/* Results */
+.results__grid { display: grid; grid-template-columns: repeat(3,1fr); gap: clamp(16px,1.6vw,22px); }
+.rcard { background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; transition: transform .35s, border-color .35s; }
+.rcard:hover { transform: translateY(-4px); border-color: rgba(199,249,46,.4); }
+.result-art {
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-bottom: 1px solid var(--line);
+  background:
+    linear-gradient(135deg, rgba(199,249,46,.16), transparent 55%),
+    linear-gradient(165deg, #171d12 0%, #0f130c 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 24px;
+  display: flex;
+  align-items: flex-end;
+}
+.result-art::before {
+  content: "";
+  position: absolute;
+  inset: 22px;
+  border: 1px solid rgba(232,255,200,.12);
+  border-radius: 16px;
+  background-image:
+    linear-gradient(rgba(232,255,200,.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232,255,200,.08) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: linear-gradient(to bottom, black, transparent 78%);
+}
+.result-art::after {
+  content: attr(data-metric);
+  position: relative;
+  z-index: 1;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(28px, 4vw, 46px);
+  line-height: .92;
+  letter-spacing: -.04em;
+  color: var(--lime);
+  max-width: 8ch;
+}
+.rcard__body { padding: 26px 26px 30px; }
+.rcard__body .q { font-size: 16px; color: var(--ink); margin-bottom: 18px; line-height: 1.5; }
+.rcard__who { display: flex; flex-direction: column; }
+.rcard__who .nm { font-weight: 700; font-size: 15px; }
+.rcard__who .rl { color: var(--ink-dim); font-size: 14px; }
+@media (max-width: 900px){ .results__grid{ grid-template-columns: 1fr 1fr; } }
+@media (max-width: 620px){ .results__grid{ grid-template-columns: 1fr; } }
+
+/* Program modules */
+.modules { display: flex; flex-direction: column; }
+.module {
+  display: grid; grid-template-columns: 130px 1fr; gap: clamp(20px,3vw,56px);
+  padding: clamp(30px,3.4vw,48px) 0; border-top: 1px solid var(--line);
+  transition: background .35s; align-items: start;
+}
+.module:last-child { border-bottom: 1px solid var(--line); }
+.module:hover { background: linear-gradient(90deg, rgba(199,249,46,.04), transparent 60%); }
+.module__no { font-family: var(--display); font-weight: 800; font-size: clamp(40px,5vw,76px); line-height: .8; color: var(--lime); letter-spacing: -.04em; }
+.module h3 { font-family: var(--display); font-weight: 700; font-size: clamp(22px,2.2vw,30px); letter-spacing: -.02em; margin-bottom: 22px; }
+.module ul { list-style: none; display: grid; gap: 12px; }
+.module ul li { padding-left: 26px; position: relative; color: var(--ink-dim); font-size: 16px; }
+.module ul li::before { content: ""; position: absolute; left: 0; top: 11px; width: 8px; height: 8px; background: var(--lime); border-radius: 2px; transform: rotate(45deg); }
+.module ul li.practice { color: var(--ink); font-weight: 600; }
+.module ul li.practice::before { background: var(--ink); }
+@media (max-width: 640px){ .module { grid-template-columns: 1fr; gap: 16px; } .module__no{ font-size:46px; } }
+
+/* Benefits / bonuses small cards */
+.bcard h3 { font-family: var(--display); font-weight: 700; font-size: 20px; letter-spacing: -.02em; margin-bottom: 12px; }
+.bcard p { color: var(--ink-dim); font-size: 15px; }
+.bcard .mk { width: 38px; height: 38px; border-radius: 11px; background: rgba(199,249,46,.12); display: grid; place-items: center; margin-bottom: 22px; color: var(--lime); }
+.bcard .mk svg { width: 19px; height: 19px; }
+
+/* Process steps */
+.process { display: grid; grid-template-columns: repeat(5,1fr); gap: 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.pstep { padding: clamp(26px,2.4vw,34px); border-right: 1px solid var(--line); position: relative; }
+.pstep:last-child { border-right: none; }
+.pstep .pn { font-family: var(--display); font-weight: 800; font-size: 14px; color: var(--lime); margin-bottom: 30px; display: block; }
+.pstep h4 { font-weight: 700; font-size: 17px; line-height: 1.2; }
+@media (max-width: 860px){ .process { grid-template-columns: 1fr 1fr; } .pstep:nth-child(2n){border-right:none;} .pstep{border-bottom:1px solid var(--line);} }
+@media (max-width: 480px){ .process { grid-template-columns: 1fr; } .pstep{border-right:none;} }
+
+/* Mentor */
+.mentor__grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(32px,5vw,72px); align-items: center; }
+.mentor__photo { position: relative; }
+.mentor__photo img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 22px; border: 1px solid var(--line); }
+.speakers { display: grid; gap: 18px; margin: 28px 0 6px; }
+.sp { padding-left: 18px; border-left: 2px solid var(--lime); }
+.sp__name { font-family: var(--display); font-weight: 700; font-size: 19px; letter-spacing: -.02em; margin-bottom: 5px; }
+.sp__role { color: var(--ink-dim); font-size: 15px; line-height: 1.5; }
+.mentor__name { font-family: var(--display); font-weight: 800; font-size: clamp(26px,3vw,40px); letter-spacing: -.03em; margin-bottom: 10px; }
+.mentor__role { color: var(--lime); font-weight: 600; font-size: 16px; margin-bottom: 26px; }
+.mentor__bio { color: var(--ink-dim); margin-bottom: 26px; max-width: 540px; }
+.mentor__quote { font-family: var(--display); font-weight: 600; font-size: clamp(18px,1.8vw,24px); line-height: 1.3; letter-spacing: -.02em; border-left: 3px solid var(--lime); padding-left: 24px; margin: 30px 0; color: var(--ink); }
+.mentor__list { list-style: none; display: grid; gap: 14px; margin-top: 30px; }
+.mentor__list li { padding-left: 30px; position: relative; color: var(--ink-dim); }
+.mentor__list li::before { content: ""; position: absolute; left: 0; top: 9px; width: 14px; height: 2px; background: var(--lime); }
+@media (max-width: 760px){ .mentor__grid{ grid-template-columns: 1fr; } .mentor__photo{ max-width: 360px; } }
+
+/* Pricing — lime punch */
+.pricing { background: var(--lime); color: var(--lime-ink); }
+.pricing .eyebrow { color: var(--lime-ink); }
+.pricing .eyebrow::before { background: var(--lime-ink); }
+.pricing h2 { color: var(--lime-ink); }
+.pricing .section-head p { color: rgba(11,13,10,.7); }
+.plans { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.plan { background: var(--bg); color: var(--ink); border-radius: 22px; padding: clamp(32px,3vw,46px); display: flex; flex-direction: column; position: relative; }
+.plan--feat { box-shadow: 0 30px 80px -30px rgba(11,13,10,.6); }
+.plan__tag { display: inline-flex; align-self: flex-start; white-space: nowrap; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: 8px 15px; border-radius: 100px; margin-bottom: 22px; }
+.plan--basic .plan__tag { background: rgba(243,246,236,.1); color: var(--ink-dim); }
+.plan--feat .plan__tag { background: var(--lime); color: var(--lime-ink); }
+.plan h3 { font-family: var(--display); font-weight: 800; font-size: 26px; letter-spacing: -.02em; margin-bottom: 4px; }
+.plan__dur { color: var(--ink-dim); font-size: 15px; margin-bottom: 22px; }
+.plan__price { font-family: var(--display); font-weight: 800; font-size: clamp(40px,4vw,56px); letter-spacing: -.04em; margin-bottom: 28px; }
+.plan ul { list-style: none; display: grid; gap: 14px; margin-bottom: 32px; flex: 1; }
+.plan ul li { padding-left: 30px; position: relative; font-size: 15px; color: var(--ink-dim); }
+.plan ul li::before { content: ""; position: absolute; left: 0; top: 7px; width: 16px; height: 16px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C7F92E' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/contain no-repeat; }
+.plan .btn { justify-content: center; width: 100%; }
+@media (max-width: 760px){ .plans{ grid-template-columns: 1fr; } }
+
+/* Offer blocks */
+.offers { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.offer { background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(30px,3vw,44px); }
+.offer h3 { font-family: var(--display); font-weight: 700; font-size: 23px; letter-spacing: -.02em; margin-bottom: 14px; }
+.offer p { color: var(--ink-dim); }
+.offer--wide { grid-column: 1 / -1; background: var(--bg-lift); display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; }
+.offer--wide .check-list { list-style: none; display: grid; gap: 12px; margin-top: 18px; }
+.offer--wide .check-list li { padding-left: 28px; position: relative; color: var(--ink-dim); font-size: 15px; }
+.offer--wide .check-list li::before { content: ""; position: absolute; left: 0; top: 8px; width: 9px; height: 9px; border-radius: 50%; background: var(--lime); }
+@media (max-width: 760px){ .offers{ grid-template-columns: 1fr; } .offer--wide{ grid-template-columns: 1fr; } }
+
+/* Testimonials */
+.tgrid { columns: 3; column-gap: 22px; }
+.tcard { background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px; margin-bottom: 22px; break-inside: avoid; transition: border-color .35s, transform .35s; }
+.tcard:hover { border-color: rgba(199,249,46,.4); transform: translateY(-3px); }
+.tcard .stars { color: var(--lime); letter-spacing: 3px; font-size: 13px; margin-bottom: 16px; }
+.tcard .q { font-size: 16px; line-height: 1.55; margin-bottom: 22px; color: var(--ink); }
+.tcard__who { display: flex; align-items: center; gap: 13px; }
+.tcard__who .av { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--lime), var(--lime-deep)); display: grid; place-items: center; font-family: var(--display); font-weight: 800; color: var(--lime-ink); font-size: 16px; flex-shrink: 0; }
+.tcard__who .nm { font-weight: 700; font-size: 15px; }
+.tcard__who .rl { color: var(--ink-dim); font-size: 13px; }
+@media (max-width: 900px){ .tgrid{ columns: 2; } }
+@media (max-width: 600px){ .tgrid{ columns: 1; } }
+
+/* Proof band */
+.proof { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.proof__grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+.proof__item { padding: clamp(28px,3vw,44px) clamp(18px,2vw,32px); border-right: 1px solid var(--line); }
+.proof__item:last-child { border-right: none; }
+.proof__n { font-family: var(--display); font-weight: 800; font-size: clamp(30px,3.4vw,48px); letter-spacing: -.03em; line-height: 1; color: var(--lime); }
+.proof__l { color: var(--ink-dim); font-size: 15px; margin-top: 12px; max-width: 200px; }
+@media (max-width: 760px){ .proof__grid{ grid-template-columns: 1fr 1fr; } .proof__item:nth-child(2){border-right:none;} .proof__item:nth-child(1),.proof__item:nth-child(2){border-bottom:1px solid var(--line);} }
+
+/* Works */
+.works__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px,1.6vw,22px); }
+.work { display: flex; flex-direction: column; gap: 14px; background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(24px,2.4vw,32px); transition: transform .35s, border-color .35s; }
+.work:hover { transform: translateY(-4px); border-color: rgba(199,249,46,.4); }
+.work__type { font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--lime); }
+.work h3 { font-family: var(--display); font-weight: 700; font-size: 20px; letter-spacing: -.02em; }
+.work__link { margin-top: auto; display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: var(--ink-dim); transition: color .2s; }
+.work__link svg { width: 15px; height: 15px; }
+.work a.work__link:hover { color: var(--lime); }
+@media (max-width: 860px){ .works__grid{ grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px){ .works__grid{ grid-template-columns: 1fr; } }
+
+/* FAQ */
+.faq__list { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.faq__item { border-bottom: 1px solid var(--line); }
+.faq__item summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: clamp(22px,2.4vw,30px) 0; font-family: var(--display); font-weight: 600; font-size: clamp(18px,1.9vw,24px); letter-spacing: -.02em; color: var(--ink); transition: color .25s; }
+.faq__item summary::-webkit-details-marker { display: none; }
+.faq__item summary:hover { color: var(--lime); }
+.faq__mk { position: relative; flex-shrink: 0; width: 22px; height: 22px; }
+.faq__mk::before, .faq__mk::after { content: ""; position: absolute; background: var(--lime); border-radius: 2px; transition: transform .3s; }
+.faq__mk::before { left: 0; top: 10px; width: 22px; height: 2px; }
+.faq__mk::after { left: 10px; top: 0; width: 2px; height: 22px; }
+.faq__item[open] .faq__mk::after { transform: scaleY(0); }
+.faq__a { color: var(--ink-dim); font-size: clamp(16px,1.4vw,18px); line-height: 1.6; max-width: 760px; padding-bottom: clamp(22px,2.4vw,30px); }
+
+/* Final CTA */
+.final { text-align: center; }
+.final h2 { margin: 0 auto 24px; max-width: 16ch; }
+.final p { color: var(--ink-dim); max-width: 600px; margin: 0 auto 38px; font-size: clamp(17px,1.5vw,20px); }
+.final .seats { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; font-size: 14px; color: var(--lime); border: 1px solid var(--line); padding: 9px 18px; border-radius: 100px; margin-bottom: 30px; }
+.final .seats .pulse { width: 9px; height: 9px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 0 0 rgba(199,249,46,.7); animation: pulse 2s infinite; }
+@keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(199,249,46,.6);} 70%{box-shadow:0 0 0 12px rgba(199,249,46,0);} 100%{box-shadow:0 0 0 0 rgba(199,249,46,0);} }
+
+/* Footer */
+.footer { border-top: 1px solid var(--line); padding-block: clamp(48px,5vw,72px) 40px; }
+.footer__grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; margin-bottom: 56px; }
+.footer__brand .logo { margin-bottom: 18px; }
+.footer__brand p { color: var(--ink-dim); font-size: 15px; max-width: 320px; }
+.footer h5 { font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 20px; }
+.footer__col a, .footer__col span { display: block; color: var(--ink-dim); font-size: 15px; margin-bottom: 13px; transition: color .2s; }
+.footer__col a:hover { color: var(--lime); }
+.footer__bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; padding-top: 28px; border-top: 1px solid var(--line-soft); color: var(--ink-faint); font-size: 13px; }
+@media (max-width: 720px){ .footer__grid{ grid-template-columns: 1fr 1fr; } .footer__brand{ grid-column: 1 / -1; } }
+</style>
+</head>
+<body>
+
+<!-- ============ Announcement ============ -->
+<div class="strip">Идёт набор в поток 2026 · <b>Осталось 5 мест из 20</b></div>
+
+<!-- ============ Nav ============ -->
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a href="#top" class="logo"><span class="dot"></span>UPGRADE</a>
+    <nav class="nav__links">
+      <a href="#about">О курсе</a>
+      <a href="#program">Программа</a>
+      <a href="#pricing">Стоимость</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#faq">Вопросы</a>
+    </nav>
+    <div class="nav__cta">
+      <a href="https://t.me/ilhom_upgrade" target="_blank" rel="noopener" class="btn btn--lime">Записаться
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <button class="burger" id="burger" aria-label="Меню" aria-expanded="false" aria-controls="mmenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile menu -->
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <nav class="mmenu__links">
+    <a href="#about">О курсе</a>
+    <a href="#program">Программа</a>
+    <a href="#pricing">Стоимость</a>
+    <a href="#reviews">Отзывы</a>
+    <a href="#faq">Вопросы</a>
+    <a href="#contacts">Контакты</a>
+  </nav>
+  <a href="https://t.me/ilhom_upgrade" target="_blank" rel="noopener" class="btn btn--lime mmenu__cta">Записаться на курс
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+  </a>
+</div>
+
+<main id="top">
+
+<!-- ============ Hero ============ -->
+<section class="hero">
+  <div class="hero__glow"></div>
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <span class="eyebrow reveal">Онлайн-курс · 6 недель</span>
+      <h1 class="display reveal" data-d="1">Искусственный<br>интеллект<br>для <em>карьеры</em> 2026</h1>
+      <p class="hero__lead reveal" data-d="2">За 6 недель освоите ИИ-инструменты, которые уже меняют рынок труда, и научитесь применять их в своей работе. Удостоверение вносится в государственный реестр.</p>
+      <div class="hero__actions reveal" data-d="3">
+        <a href="#pricing" class="btn btn--lime">Выбрать формат
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#program" class="btn btn--ghost">Смотреть программу</a>
+      </div>
+      <div class="hero__stats reveal" data-d="4">
+        <div class="stat"><div class="n">6</div><div class="l">недель до результата</div></div>
+        <div class="stat"><div class="n">40+</div><div class="l">проведённых воркшопов</div></div>
+        <div class="stat"><div class="n">100+</div><div class="l">готовых промптов в подарок</div></div>
+      </div>
+    </div>
+    <div class="hero__visual reveal" data-d="2">
+      <img src="assets/speakers.jpg" width="1106" height="1144" alt="Спикеры курса Upgrade по искусственному интеллекту" fetchpriority="high" />
+      <div class="hero__badge">Удостоверение в гос. реестре</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Полоса с цифрами ============ -->
+<section class="proof">
+  <div class="wrap proof__grid">
+    <div class="proof__item reveal"><div class="proof__n">1&#8201;276&#8201;000</div><div class="proof__l">просмотров с одного видео ученика за месяц</div></div>
+    <div class="proof__item reveal" data-d="1"><div class="proof__n">90%</div><div class="proof__l">быстрее тексты для работы — без копирайтера</div></div>
+    <div class="proof__item reveal" data-d="2"><div class="proof__n">≈7 ч</div><div class="proof__l">свободного времени в неделю у выпускницы</div></div>
+    <div class="proof__item reveal" data-d="3"><div class="proof__n">−43 000&#8201;₽</div><div class="proof__l">сэкономлено компании на правках сайта</div></div>
+  </div>
+</section>
+
+<!-- ============ Почему курс работает ============ -->
+<section class="section section--lift" id="about">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Почему этот курс работает</span>
+      <h2 class="display">Мы не пересказываем<br>статьи про ИИ</h2>
+      <p>Вы выходите с навыком, который можно применить на следующий день — не с теорией, а с результатом.</p>
+    </div>
+    <div class="grid grid-3">
+      <article class="card fcard reveal"><span class="idx">01</span><h3>Основы ИИ без воды</h3><p>Разберётесь, как на самом деле работают нейросети. Без сложных терминов, но достаточно глубоко, чтобы понимать, что и почему делает ИИ.</p></article>
+      <article class="card fcard reveal" data-d="1"><span class="idx">02</span><h3>Практика с первого дня</h3><p>Каждый блок курса — это задание на ваших реальных рабочих задачах. Учитесь не на абстрактных примерах, а на том, что приносит результат вам.</p></article>
+      <article class="card fcard reveal" data-d="2"><span class="idx">03</span><h3>Актуальные инструменты</h3><p>ChatGPT, Claude, Midjourney, инструменты автоматизации и ИИ-агенты. Работаем с тем, что используют профессионалы прямо сейчас.</p></article>
+      <article class="card fcard reveal"><span class="idx">04</span><h3>Под ваш уровень</h3><p>Программа подходит и новичкам, и тем, кто уже пробовал ИИ. Начинаем с основ, дальше каждый идёт в своём темпе с поддержкой куратора.</p></article>
+      <article class="card fcard reveal" data-d="1"><span class="idx">05</span><h3>Обратная связь на каждый шаг</h3><p>Преподаватель и помощник проверяют ваши задания с подробными комментариями. Вы не остаётесь один на один с вопросами.</p></article>
+      <article class="card fcard reveal" data-d="2"><span class="idx">06</span><h3>Рост в карьере</h3><p>Курс усиливает резюме, даёт официальное удостоверение и навыки, которые делают вас заметнее на рынке труда.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Кто мы ============ -->
+<section class="section">
+  <div class="wrap about">
+    <div class="about__grid">
+      <div class="reveal">
+        <span class="eyebrow">Кто мы</span>
+        <h2 class="display" style="margin:24px 0 30px">Upgrade — школа<br>и агентство из ХМАО</h2>
+        <p>Мы внедряем ИИ в бизнес и обучаем этому людей. Мы не теоретики: <strong>каждый инструмент в программе мы сначала проверяем на собственных проектах</strong> и проектах клиентов, и только потом приносим на курс.</p>
+        <p>Мы провели десятки воркшопов для специалистов, руководителей и предпринимателей. Подход один: меньше слайдов, больше работы руками и результата, который видно сразу.</p>
+      </div>
+      <ul class="about__points reveal" data-d="1">
+        <li><span class="yr">★</span><span class="tx">Практические знания, проверенные на десятках учеников</span></li>
+        <li><span class="yr">2023</span><span class="tx">Курсы и воркшопы по ИИ — с самого старта направления</span></li>
+        <li><span class="yr">1:1</span><span class="tx">Сопровождение каждого участника до результата</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Кому подойдёт ============ -->
+<section class="section section--lift">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Кому подойдёт курс</span>
+      <h2 class="display">Если ваша работа — это тексты,<br>решения, контент или клиенты</h2>
+      <p>ИИ уже меняет её. Вопрос только в том, успеете ли вы. Мы создали методологию, которая доведёт до результата каждого.</p>
+    </div>
+    <div class="grid grid-3">
+      <article class="card aud reveal"><span class="tag">01 / Специалисты</span><h3>Стоить дороже на рынке</h3><p>Хотите работать быстрее и выделяться среди конкурентов. ИИ-инструменты дают преимущество уже сейчас.</p></article>
+      <article class="card aud reveal" data-d="1"><span class="tag">02 / Сотрудники компаний</span><h3>Разобраться заранее</h3><p>Руководство внедряет ИИ, а вы пока наблюдаете со стороны. Лучше подготовиться, чем оказаться позади.</p></article>
+      <article class="card aud reveal" data-d="2"><span class="tag">03 / Руководители</span><h3>Решать осознанно</h3><p>Понимать, где ИИ реально экономит время команды, а где это просто хайп — и принимать решения на фактах.</p></article>
+      <article class="card aud reveal"><span class="tag">04 / Карьерные трансформеры</span><h3>Найти точку роста</h3><p>Меняете сферу или ищете новое направление. ИИ открывает ниши, которых три года назад не существовало.</p></article>
+      <article class="card aud reveal" data-d="1"><span class="tag">05 / Фрилансеры</span><h3>Больше за то же время</h3><p>Делать больше, а клиентам — подтверждать квалификацию. Курс даёт и навыки, и официальный документ.</p></article>
+      <article class="card aud reveal" data-d="2"><span class="tag">06 / Предприниматели</span><h3>Масштаб без раздутого штата</h3><p>Автоматизировать рутину и масштабировать бизнес, не нанимая лишних людей под каждую задачу.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Результаты учеников ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Результаты учеников</span>
+      <h2 class="display">Вот что получают<br>уже в первые недели</h2>
+      <p>Реальные кейсы и работы участников. Скоро здесь появятся истории нового потока.</p>
+    </div>
+    <div class="results__grid">
+      <article class="rcard reveal">
+        <div class="result-art" data-metric="35 000 ₽"></div>
+        <div class="rcard__body"><p class="q">«За один день собрал сайт, который со смежниками делался бы три месяца. На дипломе сэкономил три-четыре недели, на документах — около 35 000&#8201;₽.»</p><div class="rcard__who"><span class="nm">Юрий</span><span class="rl">Участник Upgrade Club</span></div></div>
+      </article>
+      <article class="rcard reveal" data-d="1">
+        <div class="result-art" data-metric="90%"></div>
+        <div class="rcard__body"><p class="q">«Переупаковала весь контент компании без дизайнера, тексты пишу на 90% быстрее, CRM собрала за 10 минут. Правки на сайт внесла сама — экономия 43 000&#8201;₽.»</p><div class="rcard__who"><span class="nm">Участница курса</span><span class="rl">Выпускница «ИИ для карьеры»</span></div></div>
+      </article>
+      <article class="rcard reveal" data-d="2">
+        <div class="result-art" data-metric="1,27 млн"></div>
+        <div class="rcard__body"><p class="q">«За месяц набрали 1&#8201;276&#8201;000 просмотров с одного видео и около 400 новых подписчиков. Профиль привели в порядок, пошли заявки от клиентов.»</p><div class="rcard__who"><span class="nm">Участник</span><span class="rl">Upgrade Club · продвижение</span></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Программа ============ -->
+<section class="section section--lift" id="program">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Программа курса · 6 недель</span>
+      <h2 class="display">Шесть модулей —<br>от основ до диплома</h2>
+      <p>Цель — познакомиться с ключевыми технологиями ИИ и начать применять их в профессиональной деятельности.</p>
+    </div>
+    <div class="modules">
+      <article class="module reveal"><div class="module__no">01</div><div><h3>Основы и инструменты ИИ</h3><ul>
+        <li>Что такое искусственный интеллект, как он работает и где применяется</li>
+        <li>Обзор платформ: ChatGPT, Claude, Gemini, Midjourney и другие</li>
+        <li>Как выбрать инструмент под свою задачу</li>
+        <li class="practice">Практика: первые рабочие материалы с помощью ИИ</li>
+      </ul></div></article>
+      <article class="module reveal"><div class="module__no">02</div><div><h3>Промпт-инжиниринг</h3><ul>
+        <li>Как формулировать запросы, чтобы получать нужный результат</li>
+        <li>Работа с контекстом и пошаговыми инструкциями</li>
+        <li>Готовые шаблоны промптов под профессиональные задачи</li>
+        <li class="practice">Практика: сборка личной библиотеки промптов</li>
+      </ul></div></article>
+      <article class="module reveal"><div class="module__no">03</div><div><h3>Тексты и контент с ИИ</h3><ul>
+        <li>Деловая переписка, отчёты, презентации и документы</li>
+        <li>Контент для соцсетей, рассылок и маркетинга</li>
+        <li>Анализ и обработка больших документов</li>
+        <li class="practice">Практика: контент-материал под вашу задачу</li>
+      </ul></div></article>
+      <article class="module reveal"><div class="module__no">04</div><div><h3>Изображения и визуал</h3><ul>
+        <li>Генерация изображений под конкретную задачу</li>
+        <li>Баннеры, креативы и оформление под фирменный стиль</li>
+        <li>Редактирование и обработка фото</li>
+        <li class="practice">Практика: набор визуалов для вашего проекта</li>
+      </ul></div></article>
+      <article class="module reveal"><div class="module__no">05</div><div><h3>Видео и монтаж</h3><ul>
+        <li>Генерация видео под конкретную задачу</li>
+        <li>Сценарии и рекламные ролики</li>
+        <li>Редактирование и обработка видео</li>
+        <li class="practice">Практика: создание видео для портфолио</li>
+      </ul></div></article>
+      <article class="module reveal"><div class="module__no">06</div><div><h3>Применение в вашей профессии</h3><ul>
+        <li>Разбор кейсов под разные сферы и должности</li>
+        <li>Сборка личного набора инструментов</li>
+        <li>Дипломный проект на ваших реальных задачах</li>
+        <li class="practice">Практика: защита проекта и обратная связь</li>
+      </ul></div></article>
+    </div>
+    <p class="reveal" style="margin-top:36px;color:var(--ink-dim);max-width:680px;font-size:17px">Каждый участник уходит с готовым набором ИИ-инструментов под свою профессию и дипломным проектом в портфолио.</p>
+  </div>
+</section>
+
+<!-- ============ Что получите ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Что вы получите по итогам</span>
+      <h2 class="display">Не доступ к урокам —<br>а работающий навык</h2>
+    </div>
+    <div class="grid grid-3">
+      <article class="card bcard reveal"><div class="mk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg></div><h3>Понимание, а не кнопки</h3><p>Разберётесь, как устроены ИИ-модели. Это знание не устареет, когда обновится очередное приложение.</p></article>
+      <article class="card bcard reveal" data-d="1"><div class="mk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v12H4z"/><path d="M8 20h8M9 16v4M15 16v4"/></svg></div><h3>Реальные проекты</h3><p>Соберёте кейсы на своих рабочих задачах. Их можно показать работодателю или запустить как свой проект.</p></article>
+      <article class="card bcard reveal" data-d="2"><div class="mk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0M16 6.5a3 3 0 0 1 0 5M18 19a5 5 0 0 0-3-4.6"/></svg></div><h3>Поддержка преподавателя</h3><p>Эксперт по ИИ сопровождает вас на всех этапах обучения и при создании дипломного проекта.</p></article>
+      <article class="card bcard reveal"><div class="mk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="9" r="5"/><path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5"/></svg></div><h3>Официальное удостоверение</h3><p>Удостоверение о повышении квалификации с внесением в государственный реестр. Подтверждает компетенции.</p></article>
+      <article class="card bcard reveal" data-d="1"><div class="mk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18"/></svg></div><h3>Закрытое сообщество</h3><p>Доступ к комьюнити участников и выпускников — для обмена опытом, вопросов и нетворкинга.</p></article>
+      <article class="card bcard reveal" data-d="2"><div class="mk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4M3 17l9 4 9-4"/></svg></div><h3>Практические навыки</h3><p>Работа с ИИ-инструментами, генерация контента, автоматизация и внедрение решений — всё на практике.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Бонусы ============ -->
+<section class="section section--lift">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Бонусы и дополнительные уроки</span>
+      <h2 class="display">Материалы, которые<br>ускоряют результат</h2>
+    </div>
+    <div class="grid grid-3">
+      <article class="card bcard reveal"><div class="mk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h12v14H4zM16 8h4v11h-4"/><path d="M7 9h6M7 13h6"/></svg></div><h3>Библиотека 100+ промптов</h3><p>Готовые промпты под разные задачи и профессии. Можно применять сразу, без долгой настройки.</p></article>
+      <article class="card bcard reveal" data-d="1"><div class="mk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3z"/></svg></div><h3>Записи мастер-классов</h3><p>Дополнительные разборы по темам вне основной программы — остаются у вас бессрочно.</p></article>
+      <article class="card bcard reveal" data-d="2"><div class="mk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h9l5 5v13H6z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Шаблоны и чек-листы</h3><p>Рабочие документы, по которым вы выстраиваете ИИ в свой процесс шаг за шагом.</p></article>
+      <article class="card bcard reveal" data-d="1"><div class="mk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2 2M16.4 16.4l2 2M18.4 5.6l-2 2M7.6 16.4l-2 2"/></svg></div><h3>Нейросети для профессий</h3><p>Отдельные уроки под популярные сферы: маркетинг, продажи, аналитика, управление.</p></article>
+      <article class="card bcard reveal" data-d="2"><div class="mk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/><circle cx="19" cy="18" r="2"/></svg></div><h3>Подборка сервисов</h3><p>Актуальный список ИИ-инструментов с пометками: где платно, где бесплатно и что выбрать под задачу.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Как проходит обучение ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Как проходит обучение</span>
+      <h2 class="display">Самое важное —<br>в вашей практике</h2>
+      <p>Вы создаёте контент, оформляете кейсы, настраиваете инструменты — и каждый шаг присылаете на проверку. Темп держат 6 недель: курс не растягивается на полгода.</p>
+    </div>
+    <div class="process reveal">
+      <div class="pstep"><span class="pn">Шаг 01</span><h4>Смотрите урок</h4></div>
+      <div class="pstep"><span class="pn">Шаг 02</span><h4>Выполняете задание на своей реальной задаче</h4></div>
+      <div class="pstep"><span class="pn">Шаг 03</span><h4>Присылаете работу на проверку</h4></div>
+      <div class="pstep"><span class="pn">Шаг 04</span><h4>Получаете разбор с комментариями</h4></div>
+      <div class="pstep"><span class="pn">Шаг 05</span><h4>Идёте дальше с работающим результатом</h4></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Наставник ============ -->
+<section class="section section--lift">
+  <div class="wrap mentor">
+    <div class="mentor__grid">
+      <div class="mentor__photo reveal">
+        <img src="assets/speakers.jpg" alt="Спикеры курса" />
+      </div>
+      <div class="reveal" data-d="1">
+        <span class="eyebrow">Спикеры курса</span>
+        <h2 class="display" style="font-size:clamp(28px,3.4vw,46px);margin:24px 0 22px">Учат те, кто<br>внедряет ИИ сам</h2>
+        <p class="mentor__bio">Команда Upgrade — практики, а не теоретики. Каждый инструмент в программе мы сначала проверяем на собственных и клиентских проектах, и только потом приносим на курс.</p>
+        <div class="speakers">
+          <div class="sp">
+            <div class="sp__name">Ильхом Султанов</div>
+            <div class="sp__role">Основатель школы Upgrade · эксперт по внедрению ИИ. 3+ года практики, 40 проведённых воркшопов.</div>
+          </div>
+          <div class="sp">
+            <div class="sp__name">Азиз Султанов</div>
+            <div class="sp__role">Сооснователь школы Upgrade</div>
+          </div>
+        </div>
+        <blockquote class="mentor__quote">«Мы не преподаём теорию. Каждый инструмент на курсе — из реальной практики, проверенный на своих и клиентских задачах.»</blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Тарифы (lime punch) ============ -->
+<section class="section pricing" id="pricing">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Выберите формат обучения</span>
+      <h2 class="display">Два формата —<br>один результат</h2>
+      <p>Документ об образовании вносится в государственный реестр в обоих форматах.</p>
+    </div>
+    <div class="plans">
+      <article class="plan plan--basic reveal">
+        <span class="plan__tag">Групповой формат</span>
+        <h3>В группе</h3>
+        <div class="plan__dur">6 недель обучения</div>
+        <div class="plan__price">70 000&#8201;₽</div>
+        <ul>
+          <li>Видеоуроки по всей программе</li>
+          <li>Тестовые и практические задания</li>
+          <li>Проверка домашних заданий 6 недель</li>
+          <li>Еженедельные групповые разборы</li>
+          <li>Чат участников и доступ к сообществу</li>
+          <li>Удостоверение о повышении квалификации</li>
+        </ul>
+        <a href="https://t.me/ilhom_upgrade" target="_blank" rel="noopener" class="btn btn--ghost" style="border-color:rgba(243,246,236,.2)">Записаться в группу</a>
+      </article>
+      <article class="plan plan--feat reveal" data-d="1">
+        <span class="plan__tag">Личный формат</span>
+        <h3>Один на один</h3>
+        <div class="plan__dur">2 месяца обучения</div>
+        <div class="plan__price">200 000&#8201;₽</div>
+        <ul>
+          <li>Всё из группового формата</li>
+          <li>Индивидуальная работа с наставником</li>
+          <li>Разбор ваших проектов один на один</li>
+          <li>Расширенная обратная связь и поддержка</li>
+          <li>Гибкий темп обучения</li>
+          <li>Удостоверение о повышении квалификации</li>
+        </ul>
+        <a href="https://t.me/ilhom_upgrade" target="_blank" rel="noopener" class="btn btn--lime">Выбрать личный формат</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Предложения / рассрочка / созвон ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="offers">
+      <article class="offer reveal">
+        <h3>Предоплата сегодня</h3>
+        <p>Внесите предоплату и закрепите место в ближайшем потоке. В подарок — дополнительные еженедельные разборы по вашим проектам в течение первого месяца.</p>
+      </article>
+      <article class="offer reveal" data-d="1">
+        <h3>Оплата в рассрочку</h3>
+        <p>Нет нужной суммы сразу? Разбейте стоимость на удобные платежи и начинайте учиться сейчас, не откладывая.</p>
+      </article>
+      <article class="offer offer--wide reveal">
+        <div>
+          <span class="eyebrow">Бесплатный созвон · 20 минут</span>
+          <h3 style="margin-top:18px">Не уверены, что курс вам подходит?</h3>
+          <p>Разберём именно вашу ситуацию: с какими задачами вы работаете и что хотите получить. Без давления и продаж — только честный ответ, стоит ли вам идти на курс.</p>
+        </div>
+        <div>
+          <ul class="check-list">
+            <li>Ваши задачи и текущий уровень</li>
+            <li>Какие ИИ-инструменты дадут результат быстрее всего</li>
+            <li>Какой формат подойдёт: групповой или личный</li>
+          </ul>
+          <a href="https://t.me/ilhom_upgrade" target="_blank" rel="noopener" class="btn btn--lime" style="margin-top:26px">Забронировать созвон</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Отзывы ============ -->
+<section class="section section--lift" id="reviews">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Что говорят участники</span>
+      <h2 class="display">Реальные результаты<br>участников</h2>
+      <p>Отзывы учеников курсов и воркшопов Upgrade. Часть авторов подписана по роли — до получения согласия на публикацию имени и фото.</p>
+    </div>
+    <div class="tgrid">
+      <figure class="tcard reveal"><div class="stars">★★★★★</div><p class="q">«Научился делать сайты на Tilda и работать с Claude, Perplexity и ChatGPT — обучение заняло буквально два раза по три часа. По итогу сделал себе уже три сайта и планирую учиться дальше.»</p><figcaption class="tcard__who"><span class="av">ЕЕ</span><span><span class="nm">Евгений Ерастов</span><br><span class="rl">Врач мануальной терапии</span></span></figcaption></figure>
+      <figure class="tcard reveal"><div class="stars">★★★★★</div><p class="q">«На дипломе по ГОСТу сэкономил три-четыре недели, на пакете юридических документов — около 35 000&#8201;₽. Сайт, который со смежниками делался бы три месяца, собрал за один день.»</p><figcaption class="tcard__who"><span class="av">Ю</span><span><span class="nm">Юрий</span><br><span class="rl">Участник Upgrade Club</span></span></figcaption></figure>
+      <figure class="tcard reveal"><div class="stars">★★★★★</div><p class="q">«Переупаковала весь контент компании без дизайнера и видеомонтажёра, тексты пишу на 90% быстрее. Создала локальную CRM за 10 минут и сама внесла правки на сайт — сэкономила компании 43 000&#8201;₽.»</p><figcaption class="tcard__who"><span class="av">ИК</span><span><span class="nm">Участница курса</span><br><span class="rl">Выпускница «ИИ для карьеры»</span></span></figcaption></figure>
+      <figure class="tcard reveal"><div class="stars">★★★★★</div><p class="q">«Ильхом помог привести профиль в порядок и переписать закреп. За месяц набрали 1&#8201;276&#8201;000 просмотров с одного видео, около 400 новых подписчиков и новые заявки от клиентов.»</p><figcaption class="tcard__who"><span class="av">UC</span><span><span class="nm">Участник</span><br><span class="rl">Upgrade Club</span></span></figcaption></figure>
+      <figure class="tcard reveal"><div class="stars">★★★★★</div><p class="q">«Использую ИИ для идей, контент-плана и генерации картинок вместо фотостоков. По подсчётам экономлю около 7 часов в неделю — и не только время, но и силы.»</p><figcaption class="tcard__who"><span class="av">Д</span><span><span class="nm">Участница</span><br><span class="rl">SMM-менеджер, дизайнер</span></span></figcaption></figure>
+      <figure class="tcard reveal"><div class="stars">★★★★★</div><p class="q">«Освоила промпты и ассистентов под разные задачи, создание сайта и обучающей платформы. Ищу научную информацию для кандидатской, делаю презентации и озвучку уроков. Сэкономлено времени — на годы.»</p><figcaption class="tcard__who"><span class="av">Н</span><span><span class="nm">Участница</span><br><span class="rl">Врач, научный работник</span></span></figcaption></figure>
+      <figure class="tcard reveal"><div class="stars">★★★★★</div><p class="q">«Спасибо, что показали, как делать качественные промпты — раньше писала запросы как обычный человек. Помощник-ассистент — это просто фантастика, реально освобождает кучу времени.»</p><figcaption class="tcard__who"><span class="av">СМ</span><span><span class="nm">Участница</span><br><span class="rl">Маркетолог · SMM-менеджер</span></span></figcaption></figure>
+      <figure class="tcard reveal"><div class="stars">★★★★★</div><p class="q">«Человек, не знакомый с программированием, за несколько дней я создала онлайн-платформу для студентов по английскому: уроки, ИИ-сопровождение и тренажёры с подстройкой под каждого ученика.»</p><figcaption class="tcard__who"><span class="av">EN</span><span><span class="nm">Участница</span><br><span class="rl">Создала обучающую платформу</span></span></figcaption></figure>
+      <figure class="tcard reveal"><div class="stars">★★★★★</div><p class="q">«Первое обучение в моей жизни без лекций для фонового прослушивания. Каждый урок — знания, которые применяешь сразу. Промпты, тексты, таблицы, изображения, видео, ассистенты — всё в одной программе.»</p><figcaption class="tcard__who"><span class="av">УК</span><span><span class="nm">Участник</span><br><span class="rl">Выпускник курса</span></span></figcaption></figure>
+      <figure class="tcard reveal"><div class="stars">★★★★★</div><p class="q">«Контент-план по промптам сделал меньше чем за 5 минут вместо 2–3 часов вручную. Сейчас создаю ассистента, который будет отвечать клиентам в соцсетях. Анализ аудитории и спроса стал намного легче.»</p><figcaption class="tcard__who"><span class="av">АС</span><span><span class="nm">Участник</span><br><span class="rl">Выпускник курса</span></span></figcaption></figure>
+      <figure class="tcard reveal"><div class="stars">★★★★★</div><p class="q">«Курс — находка. Самые топовые инструменты и подробные инструкции. Ильхом учитывает запросы каждого участника, и каждый урок — удивление: "а что, так можно было".»</p><figcaption class="tcard__who"><span class="av">К</span><span><span class="nm">Участница</span><br><span class="rl">Выпускница курса</span></span></figcaption></figure>
+      <figure class="tcard reveal"><div class="stars">★★★★★</div><p class="q">«Поражаюсь способности рассказать за полтора часа то, что сам изучал бы месяцами, если не годами. С эфира каждый раз ухожу с багажом знаний на понятном языке.»</p><figcaption class="tcard__who"><span class="av">Э</span><span><span class="nm">Участник</span><br><span class="rl">Гость вебинара</span></span></figcaption></figure>
+      <figure class="tcard reveal"><div class="stars">★★★★★</div><p class="q">«Нужно было поправить сайт — агентство просило ощутимые деньги только за корректировку футера. Итог: ChatGPT и 15 минут — убрала лишнее и добавила нужное сама.»</p><figcaption class="tcard__who"><span class="av">СА</span><span><span class="nm">Участница</span><br><span class="rl">Правки на сайте без разработчика</span></span></figcaption></figure>
+      <figure class="tcard reveal"><div class="stars">★★★★★</div><p class="q">«86 дней пути. Сдала экзамен на специалиста по ИИ: ассистент для учебного центра, лендинг, анализ Excel-данных, генерация изображений и видео, создание маскота. Было непросто — но я справилась.»</p><figcaption class="tcard__who"><span class="av">86</span><span><span class="nm">Участница</span><br><span class="rl">Экзамен «ИИ для карьеры»</span></span></figcaption></figure>
+      <figure class="tcard reveal"><div class="stars">★★★★★</div><p class="q">«Помогли с созданием страницы эксперта и настройкой рекламы. Три года в инфобизнесе трафик был самой сложной задачей. Это чудо — когда сидишь, а тебе поступают заявки.»</p><figcaption class="tcard__who"><span class="av">ЭР</span><span><span class="nm">Участница</span><br><span class="rl">Эксперт, инфобизнес</span></span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Работы учеников ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Работы учеников</span>
+      <h2 class="display">Сайты, боты и сервисы —<br>созданы на курсе</h2>
+      <p>Проекты участников, собранные с помощью ИИ во время обучения. Часть — с первого заказа.</p>
+    </div>
+    <div class="works__grid">
+      <article class="work reveal">
+        <span class="work__type">Лендинг</span>
+        <h3>Сайт недвижимости</h3>
+        <span class="work__link">Проект участника</span>
+      </article>
+      <article class="work reveal" data-d="1">
+        <span class="work__type">Резюме-сайт</span>
+        <h3>Личная страница-портфолио</h3>
+        <a class="work__link" href="https://natalia.base44.app" target="_blank" rel="noopener">natalia.base44.app
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </a>
+      </article>
+      <article class="work reveal" data-d="2">
+        <span class="work__type">Первый заказ</span>
+        <h3>Сайт под клиента</h3>
+        <a class="work__link" href="https://kristina-azarova.base44.app" target="_blank" rel="noopener">kristina-azarova.base44.app
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </a>
+      </article>
+      <article class="work reveal">
+        <span class="work__type">Личный бренд</span>
+        <h3>Сайт-визитка эксперта</h3>
+        <span class="work__link">Проект участника</span>
+      </article>
+      <article class="work reveal" data-d="1">
+        <span class="work__type">Telegram-бот</span>
+        <h3>Поиск квартир и домов</h3>
+        <a class="work__link" href="https://t.me/ThingToDoIDoBot" target="_blank" rel="noopener">t.me/ThingToDoIDoBot
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </a>
+      </article>
+      <article class="work reveal" data-d="2">
+        <span class="work__type">ИИ-сервис</span>
+        <h3>Коуч для PR-специалистов</h3>
+        <a class="work__link" href="https://pr-ai-coach.base44.app" target="_blank" rel="noopener">pr-ai-coach.base44.app
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section section--lift" id="faq">
+  <div class="wrap faq">
+    <div class="section-head reveal">
+      <span class="eyebrow">Частые вопросы</span>
+      <h2 class="display">Коротко о главном</h2>
+      <p>Если не нашли ответ — напишите нам в Telegram, разберём вашу ситуацию лично.</p>
+    </div>
+    <div class="faq__list">
+      <details class="faq__item reveal">
+        <summary>Подойдёт ли курс новичку без опыта в ИИ?<span class="faq__mk"></span></summary>
+        <div class="faq__a">Да. Начинаем с основ — что такое ИИ и как им пользоваться, — и дальше каждый идёт в своём темпе с поддержкой наставника. Опыт в программировании не нужен.</div>
+      </details>
+      <details class="faq__item reveal">
+        <summary>Что за удостоверение и что значит «в государственном реестре»?<span class="faq__mk"></span></summary>
+        <div class="faq__a">По итогам курса при сдаче экзамена вы получаете удостоверение о повышении квалификации. Данные о документе вносятся в государственный реестр — его можно проверить и приложить к резюме.</div>
+      </details>
+      <details class="faq__item reveal">
+        <summary>Сколько времени нужно уделять обучению?<span class="faq__mk"></span></summary>
+        <div class="faq__a">Курс рассчитан на 6 недель. Формат гибкий: смотрите урок, выполняете задание на своей реальной задаче и присылаете на проверку. В среднем достаточно нескольких часов в неделю.</div>
+      </details>
+      <details class="faq__item reveal">
+        <summary>Нужен ли свой проект или рабочая задача?<span class="faq__mk"></span></summary>
+        <div class="faq__a">Желательно — так обучение приносит максимум пользы: вы сразу применяете инструменты к своим задачам. Если проекта нет, наставник поможет подобрать подходящий кейс.</div>
+      </details>
+      <details class="faq__item reveal">
+        <summary>Можно ли оплатить в рассрочку?<span class="faq__mk"></span></summary>
+        <div class="faq__a">Да. Стоимость можно разбить на удобные платежи и начать учиться сразу. Условия рассрочки обсудим в личном сообщении.</div>
+      </details>
+      <details class="faq__item reveal">
+        <summary>Чем групповой формат отличается от личного?<span class="faq__mk"></span></summary>
+        <div class="faq__a">В группе — общая программа, проверка заданий и еженедельные разборы (6 недель). Личный формат — это 2 месяца индивидуальной работы с наставником, разбор ваших проектов один на один и гибкий темп.</div>
+      </details>
+      <details class="faq__item reveal">
+        <summary>Какие инструменты мы изучаем?<span class="faq__mk"></span></summary>
+        <div class="faq__a">ChatGPT, Claude, Gemini, Perplexity, Midjourney и другие — для текста, изображений, видео, анализа данных и автоматизации. Работаем с тем, что используют профессионалы прямо сейчас.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Финальный CTA ============ -->
+<section class="section final">
+  <div class="wrap reveal">
+    <span class="seats"><span class="pulse"></span>Набор в этот поток · осталось 5 мест из 20</span>
+    <h2 class="display">Группа небольшая —<br>намеренно</h2>
+    <p>Чтобы каждый участник получил внимание преподавателя и разбор своей ситуации. Когда места закончатся, набор закроется до следующего потока.</p>
+    <a href="https://t.me/ilhom_upgrade" target="_blank" rel="noopener" class="btn btn--lime" style="font-size:18px;padding:19px 36px">Забронировать место
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ Footer ============ -->
+<footer class="footer" id="contacts">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <div class="logo"><span class="dot"></span>UPGRADE</div>
+        <p>Агентство и школа из ХМАО. Внедряем ИИ в бизнес и обучаем этому людей с 2023 года.</p>
+      </div>
+      <div class="footer__col">
+        <h5>Контакты</h5>
+        <a href="https://t.me/ilhom_upgrade" target="_blank" rel="noopener">Telegram: @ilhom_upgrade</a>
+        <a href="https://upgrade-agency.ru" target="_blank" rel="noopener">upgrade-agency.ru</a>
+        <a href="tel:+79097121456">+7 909 712 14 56</a>
+        <a href="mailto:upgrade-hmao@yandex.ru">upgrade-hmao@yandex.ru</a>
+      </div>
+      <div class="footer__col">
+        <h5>Документы</h5>
+        <a href="mailto:upgrade-hmao@yandex.ru?subject=%D0%A0%D0%B5%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%82%D1%8B%20Upgrade">Реквизиты организации</a>
+        <a href="mailto:upgrade-hmao@yandex.ru?subject=%D0%9F%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0%20%D0%BA%D0%BE%D0%BD%D1%84%D0%B8%D0%B4%D0%B5%D0%BD%D1%86%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D0%B8%20Upgrade">Политика конфиденциальности</a>
+        <a href="mailto:upgrade-hmao@yandex.ru?subject=%D0%94%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%20%D0%BE%D1%84%D0%B5%D1%80%D1%82%D1%8B%20Upgrade">Договор оферты</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 Upgrade · Искусственный интеллект для карьеры</span>
+      <span>Удостоверение вносится в государственный реестр</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  (function () {
+    var burger = document.getElementById('burger');
+    var mmenu = document.getElementById('mmenu');
+    if (!burger || !mmenu) return;
+    function setOpen(open) {
+      burger.classList.toggle('open', open);
+      mmenu.classList.toggle('open', open);
+      document.body.classList.toggle('menu-open', open);
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      mmenu.setAttribute('aria-hidden', open ? 'false' : 'true');
+    }
+    burger.addEventListener('click', function () { setOpen(!mmenu.classList.contains('open')); });
+    mmenu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setOpen(false); }); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+  })();
+</script>
+<script>
+  // Scroll reveal — rAF + scroll/resize, with initial pass (no IntersectionObserver)
+  (function () {
+    var els = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+    var ticking = false;
+    function check() {
+      ticking = false;
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      for (var i = els.length - 1; i >= 0; i--) {
+        var el = els[i];
+        var top = el.getBoundingClientRect().top;
+        if (top < vh * 0.92) {
+          el.classList.add('in');
+          els.splice(i, 1);
+        }
+      }
+      if (els.length === 0) {
+        window.removeEventListener('scroll', onScroll);
+        window.removeEventListener('resize', onScroll);
+      }
+    }
+    function onScroll() {
+      if (!ticking) { ticking = true; requestAnimationFrame(check); }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    check();
+    // safety: ensure everything is visible shortly after load regardless
+    setTimeout(function () { els.forEach(function (el) { el.classList.add('in'); }); }, 2500);
+  })();
+</script>
+</body>
+</html>
