@@ -13,12 +13,12 @@
 <meta property="og:locale" content="ru_RU" />
 <meta property="og:url" content="https://ai-career-ilhom-sultanovs-projects.vercel.app/" />
 <meta property="og:site_name" content="Upgrade" />
-<meta property="og:image" content="https://ai-career-ilhom-sultanovs-projects.vercel.app/assets/speakers.jpg" />
-<meta property="og:image:alt" content="Спикеры курса «Искусственный интеллект для карьеры 2026»" />
+<meta property="og:image" content="https://ai-career-ilhom-sultanovs-projects.vercel.app/assets/training-audience.jpg" />
+<meta property="og:image:alt" content="Выступление Upgrade по искусственному интеллекту" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Искусственный интеллект для карьеры 2026 — Upgrade" />
 <meta name="twitter:description" content="За 6 недель освоите ИИ-инструменты для карьеры. Практика, наставник, удостоверение в госреестре." />
-<meta name="twitter:image" content="https://ai-career-ilhom-sultanovs-projects.vercel.app/assets/speakers.jpg" />
+<meta name="twitter:image" content="https://ai-career-ilhom-sultanovs-projects.vercel.app/assets/training-audience.jpg" />
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
 <script type="application/ld+json">
 {
@@ -155,6 +155,37 @@ body.menu-open { overflow: hidden; }
 .about__points .tx { font-size: 17px; }
 @media (max-width: 760px){ .about__grid{ grid-template-columns: 1fr; } }
 
+/* Real practice photos */
+.practice-photos { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(16px, 2vw, 24px); margin-top: clamp(36px, 5vw, 72px); }
+.practice-photo {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  min-height: 260px;
+}
+.practice-photo img { width: 100%; height: 100%; min-height: inherit; object-fit: cover; display: block; filter: saturate(.92) contrast(1.04); }
+.practice-photo figcaption {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+  padding: 12px 14px;
+  border: 1px solid rgba(232,255,200,.16);
+  border-radius: 14px;
+  background: rgba(5,8,5,.78);
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.35;
+  backdrop-filter: blur(10px);
+}
+.practice-photo--tall { min-height: 420px; }
+@media (max-width: 760px){
+  .practice-photos { grid-template-columns: 1fr; }
+  .practice-photo, .practice-photo--tall { min-height: 260px; }
+}
+
 /* Audience */
 .aud { padding: clamp(28px,2.6vw,40px); display: flex; flex-direction: column; }
 .aud h3 { font-family: var(--display); font-weight: 700; font-size: 21px; letter-spacing: -0.02em; margin-bottom: 14px; }
@@ -245,8 +276,17 @@ body.menu-open { overflow: hidden; }
 
 /* Mentor */
 .mentor__grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(32px,5vw,72px); align-items: center; }
-.mentor__photo { position: relative; }
-.mentor__photo img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 22px; border: 1px solid var(--line); }
+.mentor__photos { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: stretch; }
+.mentor__portrait {
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  overflow: hidden;
+  background: var(--bg-card);
+}
+.mentor__portrait img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; background: #f3f3f0; }
+.mentor__caption { padding: 16px; border-top: 1px solid var(--line); }
+.mentor__caption strong { display: block; font-family: var(--display); font-size: 17px; letter-spacing: -.02em; margin-bottom: 4px; }
+.mentor__caption span { color: var(--ink-dim); font-size: 13px; line-height: 1.35; display: block; }
 .speakers { display: grid; gap: 18px; margin: 28px 0 6px; }
 .sp { padding-left: 18px; border-left: 2px solid var(--lime); }
 .sp__name { font-family: var(--display); font-weight: 700; font-size: 19px; letter-spacing: -.02em; margin-bottom: 5px; }
@@ -258,7 +298,8 @@ body.menu-open { overflow: hidden; }
 .mentor__list { list-style: none; display: grid; gap: 14px; margin-top: 30px; }
 .mentor__list li { padding-left: 30px; position: relative; color: var(--ink-dim); }
 .mentor__list li::before { content: ""; position: absolute; left: 0; top: 9px; width: 14px; height: 2px; background: var(--lime); }
-@media (max-width: 760px){ .mentor__grid{ grid-template-columns: 1fr; } .mentor__photo{ max-width: 360px; } }
+@media (max-width: 760px){ .mentor__grid{ grid-template-columns: 1fr; } .mentor__photos{ max-width: 520px; } }
+@media (max-width: 420px){ .mentor__photos{ grid-template-columns: 1fr; max-width: 280px; } }
 
 /* Pricing — lime punch */
 .pricing { background: var(--lime); color: var(--lime-ink); }
@@ -473,6 +514,16 @@ body.menu-open { overflow: hidden; }
         <li><span class="yr">1:1</span><span class="tx">Сопровождение каждого участника до результата</span></li>
       </ul>
     </div>
+    <div class="practice-photos">
+      <figure class="practice-photo practice-photo--tall reveal">
+        <img src="assets/training-audience.jpg" alt="Выступление Upgrade перед аудиторией" loading="lazy" />
+        <figcaption>Выступления и воркшопы Upgrade: объясняем ИИ на понятных рабочих сценариях.</figcaption>
+      </figure>
+      <figure class="practice-photo reveal" data-d="1">
+        <img src="assets/practice-session.jpg" alt="Практическое занятие по ИИ-инструментам" loading="lazy" />
+        <figcaption>Обучение строится вокруг практики: участники сразу работают с инструментами и своими задачами.</figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
@@ -627,8 +678,21 @@ body.menu-open { overflow: hidden; }
 <section class="section section--lift">
   <div class="wrap mentor">
     <div class="mentor__grid">
-      <div class="mentor__photo reveal">
-        <img src="assets/speakers.jpg" alt="Спикеры курса" />
+      <div class="mentor__photos reveal">
+        <figure class="mentor__portrait">
+          <img src="assets/founder-ilhom.png" alt="Ильхом Султанов" loading="lazy" />
+          <figcaption class="mentor__caption">
+            <strong>Ильхом Султанов</strong>
+            <span>Сооснователь Upgrade</span>
+          </figcaption>
+        </figure>
+        <figure class="mentor__portrait">
+          <img src="assets/founder-aziz.png" alt="Азиз Султанов" loading="lazy" />
+          <figcaption class="mentor__caption">
+            <strong>Азиз Султанов</strong>
+            <span>Сооснователь Upgrade</span>
+          </figcaption>
+        </figure>
       </div>
       <div class="reveal" data-d="1">
         <span class="eyebrow">Спикеры курса</span>
