@@ -71,7 +71,8 @@
 
       const subject = encodeURIComponent('Заявка на курс ИИ для карьеры 2026');
       const mailBody = encodeURIComponent(body);
-      window.location.href = `mailto:upgrade-hmao@yandex.ru?subject=${subject}&body=${mailBody}`;
+      window.open(`mailto:upgrade-hmao@yandex.ru?subject=${subject}&body=${mailBody}`, '_blank');
+      window.location.href = 'thanks.html';
     });
   }
 })();

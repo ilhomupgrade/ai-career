@@ -11,6 +11,10 @@ Static landing page for the Upgrade course "Искусственный инте�
 - `project/privacy.html` — privacy policy
 - `project/offer.html` — offer template
 - `project/requisites.html` — requisites template
+- `project/thanks.html` — lead form thank-you page
+- `project/program.html` — extended course program
+- `project/cases.html` — testimonials and participant projects
+- `project/certificate.html` — certificate explanation
 - `ai-career-2026-standalone.html` — one-file HTML export for sharing
 
 ## Local Preview
