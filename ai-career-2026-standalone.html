@@ -191,6 +191,109 @@ h3.display { font-size: clamp(24px, 2.4vw, 34px); line-height: 1; }
 .grid-2 { grid-template-columns: repeat(2, 1fr); }
 .grid-3 { grid-template-columns: repeat(3, 1fr); }
 
+/* ---------- Lead form ---------- */
+.lead {
+  display: grid;
+  grid-template-columns: .95fr 1.05fr;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+}
+.lead__copy p {
+  color: var(--ink-dim);
+  font-size: clamp(17px, 1.5vw, 21px);
+  max-width: 620px;
+  margin-top: 24px;
+}
+.lead__form {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: clamp(26px, 3vw, 42px);
+  display: grid;
+  gap: 18px;
+}
+.lead__form label {
+  display: grid;
+  gap: 8px;
+}
+.lead__form label span {
+  color: var(--ink-dim);
+  font-size: 14px;
+  font-weight: 700;
+}
+.lead__form input,
+.lead__form select,
+.lead__form textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg);
+  color: var(--ink);
+  font: inherit;
+  font-size: 16px;
+  padding: 14px 16px;
+  outline: none;
+}
+.lead__form textarea {
+  resize: vertical;
+}
+.lead__form input:focus,
+.lead__form select:focus,
+.lead__form textarea:focus {
+  border-color: var(--lime);
+}
+.lead__note {
+  color: var(--ink-faint);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.lead__note a {
+  color: var(--lime);
+}
+
+/* ---------- Document pages ---------- */
+.doc-page {
+  min-height: 100vh;
+}
+.doc {
+  max-width: 860px;
+  padding-block: clamp(56px, 8vw, 110px);
+}
+.doc__back {
+  color: var(--lime);
+  font-weight: 700;
+  display: inline-flex;
+  margin-bottom: 34px;
+}
+.doc h1 {
+  font-family: var(--display);
+  font-size: clamp(34px, 5vw, 64px);
+  line-height: 1;
+  letter-spacing: -.03em;
+  margin-bottom: 28px;
+  overflow-wrap: anywhere;
+}
+.doc h2 {
+  font-family: var(--display);
+  font-size: clamp(22px, 2.4vw, 30px);
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  margin: 42px 0 16px;
+}
+.doc p,
+.doc li {
+  color: var(--ink-dim);
+  overflow-wrap: anywhere;
+}
+.doc ul {
+  display: grid;
+  gap: 10px;
+  margin: 14px 0 0 22px;
+}
+.doc strong {
+  color: var(--ink);
+}
+
 /* ---------- Reveal animation ---------- */
 @media (prefers-reduced-motion: no-preference) {
   .js .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1); }
@@ -205,6 +308,7 @@ h3.display { font-size: clamp(24px, 2.4vw, 34px); line-height: 1; }
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
   .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .lead { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
   body { font-size: 16px; }
@@ -531,6 +635,7 @@ body.menu-open { overflow: hidden; }
       <a href="#pricing">Стоимость</a>
       <a href="#reviews">Отзывы</a>
       <a href="#faq">Вопросы</a>
+      <a href="#lead">Заявка</a>
     </nav>
     <div class="nav__cta">
       <a href="https://t.me/ilhom_upgrade" target="_blank" rel="noopener" class="btn btn--lime">Записаться
@@ -551,6 +656,7 @@ body.menu-open { overflow: hidden; }
     <a href="#pricing">Стоимость</a>
     <a href="#reviews">Отзывы</a>
     <a href="#faq">Вопросы</a>
+    <a href="#lead">Заявка</a>
     <a href="#contacts">Контакты</a>
   </nav>
   <a href="https://t.me/ilhom_upgrade" target="_blank" rel="noopener" class="btn btn--lime mmenu__cta">Записаться на курс
@@ -999,13 +1105,50 @@ body.menu-open { overflow: hidden; }
   </div>
 </section>
 
+<!-- ============ Заявка ============ -->
+<section class="section" id="lead">
+  <div class="wrap lead">
+    <div class="lead__copy reveal">
+      <span class="eyebrow">Оставить заявку</span>
+      <h2 class="display">Разберём вашу задачу<br>до старта курса</h2>
+      <p>Напишите, чем занимаетесь и какой результат хотите получить. Ответим в Telegram или по указанному контакту и подскажем, какой формат подойдёт.</p>
+    </div>
+    <form class="lead__form reveal" data-d="1" data-lead-form>
+      <label>
+        <span>Имя</span>
+        <input name="name" type="text" autocomplete="name" required />
+      </label>
+      <label>
+        <span>Телефон или Telegram</span>
+        <input name="contact" type="text" autocomplete="tel" placeholder="@username или +7..." required />
+      </label>
+      <label>
+        <span>Формат</span>
+        <select name="format" required>
+          <option value="Групповой формат">Групповой формат</option>
+          <option value="Личный формат 1:1">Личный формат 1:1</option>
+          <option value="Пока не знаю">Пока не знаю</option>
+        </select>
+      </label>
+      <label>
+        <span>Что хотите прокачать с ИИ?</span>
+        <textarea name="message" rows="4" placeholder="Например: контент, работа с документами, автоматизация, карьерный переход"></textarea>
+      </label>
+      <button class="btn btn--lime" type="submit">Отправить заявку
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+      <p class="lead__note">Форма откроет письмо на upgrade-hmao@yandex.ru. Можно также написать напрямую в Telegram: <a href="https://t.me/ilhom_upgrade" target="_blank" rel="noopener">@ilhom_upgrade</a>.</p>
+    </form>
+  </div>
+</section>
+
 <!-- ============ Финальный CTA ============ -->
 <section class="section final">
   <div class="wrap reveal">
     <span class="seats"><span class="pulse"></span>Набор в этот поток · осталось 5 мест из 20</span>
     <h2 class="display">Группа небольшая —<br>намеренно</h2>
     <p>Чтобы каждый участник получил внимание преподавателя и разбор своей ситуации. Когда места закончатся, набор закроется до следующего потока.</p>
-    <a href="https://t.me/ilhom_upgrade" target="_blank" rel="noopener" class="btn btn--lime" style="font-size:18px;padding:19px 36px">Забронировать место
+    <a href="#lead" class="btn btn--lime" style="font-size:18px;padding:19px 36px">Забронировать место
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </a>
   </div>
@@ -1030,9 +1173,9 @@ body.menu-open { overflow: hidden; }
       </div>
       <div class="footer__col">
         <h5>Документы</h5>
-        <a href="mailto:upgrade-hmao@yandex.ru?subject=%D0%A0%D0%B5%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%82%D1%8B%20Upgrade">Реквизиты организации</a>
-        <a href="mailto:upgrade-hmao@yandex.ru?subject=%D0%9F%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0%20%D0%BA%D0%BE%D0%BD%D1%84%D0%B8%D0%B4%D0%B5%D0%BD%D1%86%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D0%B8%20Upgrade">Политика конфиденциальности</a>
-        <a href="mailto:upgrade-hmao@yandex.ru?subject=%D0%94%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%20%D0%BE%D1%84%D0%B5%D1%80%D1%82%D1%8B%20Upgrade">Договор оферты</a>
+        <a href="requisites.html">Реквизиты организации</a>
+        <a href="privacy.html">Политика конфиденциальности</a>
+        <a href="offer.html">Договор оферты</a>
       </div>
     </div>
     <div class="footer__bottom">
@@ -1043,53 +1186,84 @@ body.menu-open { overflow: hidden; }
 </footer>
 
 <script>
-  // Mobile menu toggle
-  (function () {
-    var burger = document.getElementById('burger');
-    var mmenu = document.getElementById('mmenu');
-    if (!burger || !mmenu) return;
-    function setOpen(open) {
+(() => {
+  const burger = document.getElementById('burger');
+  const mmenu = document.getElementById('mmenu');
+
+  if (burger && mmenu) {
+    const setOpen = (open) => {
       burger.classList.toggle('open', open);
       mmenu.classList.toggle('open', open);
       document.body.classList.toggle('menu-open', open);
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
       mmenu.setAttribute('aria-hidden', open ? 'false' : 'true');
-    }
-    burger.addEventListener('click', function () { setOpen(!mmenu.classList.contains('open')); });
-    mmenu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setOpen(false); }); });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
-  })();
-</script>
-<script>
-  // Scroll reveal — rAF + scroll/resize, with initial pass (no IntersectionObserver)
-  (function () {
-    var els = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
-    var ticking = false;
-    function check() {
-      ticking = false;
-      var vh = window.innerHeight || document.documentElement.clientHeight;
-      for (var i = els.length - 1; i >= 0; i--) {
-        var el = els[i];
-        var top = el.getBoundingClientRect().top;
-        if (top < vh * 0.92) {
-          el.classList.add('in');
-          els.splice(i, 1);
-        }
-      }
-      if (els.length === 0) {
-        window.removeEventListener('scroll', onScroll);
-        window.removeEventListener('resize', onScroll);
+    };
+
+    burger.addEventListener('click', () => setOpen(!mmenu.classList.contains('open')));
+    mmenu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => setOpen(false));
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') setOpen(false);
+    });
+  }
+
+  const revealEls = Array.from(document.querySelectorAll('.reveal'));
+  let ticking = false;
+
+  const checkReveal = () => {
+    ticking = false;
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+
+    for (let i = revealEls.length - 1; i >= 0; i -= 1) {
+      const el = revealEls[i];
+      if (el.getBoundingClientRect().top < vh * 0.92) {
+        el.classList.add('in');
+        revealEls.splice(i, 1);
       }
     }
-    function onScroll() {
-      if (!ticking) { ticking = true; requestAnimationFrame(check); }
+
+    if (revealEls.length === 0) {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
     }
+  };
+
+  function onScroll() {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(checkReveal);
+    }
+  }
+
+  if (revealEls.length > 0) {
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll);
-    check();
-    // safety: ensure everything is visible shortly after load regardless
-    setTimeout(function () { els.forEach(function (el) { el.classList.add('in'); }); }, 2500);
-  })();
+    checkReveal();
+    setTimeout(() => revealEls.forEach((el) => el.classList.add('in')), 2500);
+  }
+
+  const leadForm = document.querySelector('[data-lead-form]');
+  if (leadForm) {
+    leadForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const data = new FormData(leadForm);
+      const body = [
+        'Новая заявка на курс «ИИ для карьеры 2026»',
+        '',
+        `Имя: ${data.get('name') || ''}`,
+        `Контакт: ${data.get('contact') || ''}`,
+        `Формат: ${data.get('format') || ''}`,
+        `Задача: ${data.get('message') || ''}`,
+      ].join('\n');
+
+      const subject = encodeURIComponent('Заявка на курс ИИ для карьеры 2026');
+      const mailBody = encodeURIComponent(body);
+      window.location.href = `mailto:upgrade-hmao@yandex.ru?subject=${subject}&body=${mailBody}`;
+    });
+  }
+})();
+
 </script>
 </body>
 </html>

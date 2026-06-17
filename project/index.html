@@ -374,6 +374,7 @@ body.menu-open { overflow: hidden; }
       <a href="#pricing">Стоимость</a>
       <a href="#reviews">Отзывы</a>
       <a href="#faq">Вопросы</a>
+      <a href="#lead">Заявка</a>
     </nav>
     <div class="nav__cta">
       <a href="https://t.me/ilhom_upgrade" target="_blank" rel="noopener" class="btn btn--lime">Записаться
@@ -394,6 +395,7 @@ body.menu-open { overflow: hidden; }
     <a href="#pricing">Стоимость</a>
     <a href="#reviews">Отзывы</a>
     <a href="#faq">Вопросы</a>
+    <a href="#lead">Заявка</a>
     <a href="#contacts">Контакты</a>
   </nav>
   <a href="https://t.me/ilhom_upgrade" target="_blank" rel="noopener" class="btn btn--lime mmenu__cta">Записаться на курс
@@ -842,13 +844,50 @@ body.menu-open { overflow: hidden; }
   </div>
 </section>
 
+<!-- ============ Заявка ============ -->
+<section class="section" id="lead">
+  <div class="wrap lead">
+    <div class="lead__copy reveal">
+      <span class="eyebrow">Оставить заявку</span>
+      <h2 class="display">Разберём вашу задачу<br>до старта курса</h2>
+      <p>Напишите, чем занимаетесь и какой результат хотите получить. Ответим в Telegram или по указанному контакту и подскажем, какой формат подойдёт.</p>
+    </div>
+    <form class="lead__form reveal" data-d="1" data-lead-form>
+      <label>
+        <span>Имя</span>
+        <input name="name" type="text" autocomplete="name" required />
+      </label>
+      <label>
+        <span>Телефон или Telegram</span>
+        <input name="contact" type="text" autocomplete="tel" placeholder="@username или +7..." required />
+      </label>
+      <label>
+        <span>Формат</span>
+        <select name="format" required>
+          <option value="Групповой формат">Групповой формат</option>
+          <option value="Личный формат 1:1">Личный формат 1:1</option>
+          <option value="Пока не знаю">Пока не знаю</option>
+        </select>
+      </label>
+      <label>
+        <span>Что хотите прокачать с ИИ?</span>
+        <textarea name="message" rows="4" placeholder="Например: контент, работа с документами, автоматизация, карьерный переход"></textarea>
+      </label>
+      <button class="btn btn--lime" type="submit">Отправить заявку
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+      <p class="lead__note">Форма откроет письмо на upgrade-hmao@yandex.ru. Можно также написать напрямую в Telegram: <a href="https://t.me/ilhom_upgrade" target="_blank" rel="noopener">@ilhom_upgrade</a>.</p>
+    </form>
+  </div>
+</section>
+
 <!-- ============ Финальный CTA ============ -->
 <section class="section final">
   <div class="wrap reveal">
     <span class="seats"><span class="pulse"></span>Набор в этот поток · осталось 5 мест из 20</span>
     <h2 class="display">Группа небольшая —<br>намеренно</h2>
     <p>Чтобы каждый участник получил внимание преподавателя и разбор своей ситуации. Когда места закончатся, набор закроется до следующего потока.</p>
-    <a href="https://t.me/ilhom_upgrade" target="_blank" rel="noopener" class="btn btn--lime" style="font-size:18px;padding:19px 36px">Забронировать место
+    <a href="#lead" class="btn btn--lime" style="font-size:18px;padding:19px 36px">Забронировать место
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </a>
   </div>
@@ -873,9 +912,9 @@ body.menu-open { overflow: hidden; }
       </div>
       <div class="footer__col">
         <h5>Документы</h5>
-        <a href="mailto:upgrade-hmao@yandex.ru?subject=%D0%A0%D0%B5%D0%BA%D0%B2%D0%B8%D0%B7%D0%B8%D1%82%D1%8B%20Upgrade">Реквизиты организации</a>
-        <a href="mailto:upgrade-hmao@yandex.ru?subject=%D0%9F%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0%20%D0%BA%D0%BE%D0%BD%D1%84%D0%B8%D0%B4%D0%B5%D0%BD%D1%86%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D0%B8%20Upgrade">Политика конфиденциальности</a>
-        <a href="mailto:upgrade-hmao@yandex.ru?subject=%D0%94%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%20%D0%BE%D1%84%D0%B5%D1%80%D1%82%D1%8B%20Upgrade">Договор оферты</a>
+        <a href="requisites.html">Реквизиты организации</a>
+        <a href="privacy.html">Политика конфиденциальности</a>
+        <a href="offer.html">Договор оферты</a>
       </div>
     </div>
     <div class="footer__bottom">
@@ -885,54 +924,6 @@ body.menu-open { overflow: hidden; }
   </div>
 </footer>
 
-<script>
-  // Mobile menu toggle
-  (function () {
-    var burger = document.getElementById('burger');
-    var mmenu = document.getElementById('mmenu');
-    if (!burger || !mmenu) return;
-    function setOpen(open) {
-      burger.classList.toggle('open', open);
-      mmenu.classList.toggle('open', open);
-      document.body.classList.toggle('menu-open', open);
-      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-      mmenu.setAttribute('aria-hidden', open ? 'false' : 'true');
-    }
-    burger.addEventListener('click', function () { setOpen(!mmenu.classList.contains('open')); });
-    mmenu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setOpen(false); }); });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
-  })();
-</script>
-<script>
-  // Scroll reveal — rAF + scroll/resize, with initial pass (no IntersectionObserver)
-  (function () {
-    var els = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
-    var ticking = false;
-    function check() {
-      ticking = false;
-      var vh = window.innerHeight || document.documentElement.clientHeight;
-      for (var i = els.length - 1; i >= 0; i--) {
-        var el = els[i];
-        var top = el.getBoundingClientRect().top;
-        if (top < vh * 0.92) {
-          el.classList.add('in');
-          els.splice(i, 1);
-        }
-      }
-      if (els.length === 0) {
-        window.removeEventListener('scroll', onScroll);
-        window.removeEventListener('resize', onScroll);
-      }
-    }
-    function onScroll() {
-      if (!ticking) { ticking = true; requestAnimationFrame(check); }
-    }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    check();
-    // safety: ensure everything is visible shortly after load regardless
-    setTimeout(function () { els.forEach(function (el) { el.classList.add('in'); }); }, 2500);
-  })();
-</script>
+<script src="app.js"></script>
 </body>
 </html>
