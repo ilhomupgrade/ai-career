@@ -23,14 +23,14 @@ python3 -m http.server 4173 --directory project
 
 ## Vercel
 
-Deploy the `project` directory as the Vercel project root:
+The Vercel project uses `project` as its Root Directory. Run deploy commands from the repository root:
 
 ```bash
-vercel deploy --cwd project -y
+vercel deploy -y
 ```
 
 Production deploy:
 
 ```bash
-vercel deploy --prod --cwd project -y
+vercel deploy --prod -y
 ```
