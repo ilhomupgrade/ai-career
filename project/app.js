@@ -57,9 +57,17 @@
 
   const leadForm = document.querySelector('[data-lead-form]');
   if (leadForm) {
-    leadForm.addEventListener('submit', (event) => {
-      event.preventDefault();
-      const data = new FormData(leadForm);
+    const submitButton = leadForm.querySelector('button[type="submit"]');
+    const status = leadForm.querySelector('[data-lead-status]');
+    const originalButtonHtml = submitButton ? submitButton.innerHTML : '';
+
+    const setStatus = (type, message) => {
+      if (!status) return;
+      status.textContent = message;
+      status.dataset.state = type;
+    };
+
+    const mailtoFallback = (data) => {
       const body = [
         'Новая заявка на курс «ИИ для карьеры 2026»',
         '',
@@ -72,7 +80,50 @@
       const subject = encodeURIComponent('Заявка на курс ИИ для карьеры 2026');
       const mailBody = encodeURIComponent(body);
       window.open(`mailto:upgrade-hmao@yandex.ru?subject=${subject}&body=${mailBody}`, '_blank');
-      window.location.href = 'thanks.html';
+    };
+
+    leadForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const data = new FormData(leadForm);
+
+      const payload = Object.fromEntries(data.entries());
+      payload.page = window.location.href;
+      payload.referrer = document.referrer;
+      payload.utm = Object.fromEntries(
+        Array.from(new URLSearchParams(window.location.search).entries()).filter(([key]) => key.startsWith('utm_')),
+      );
+
+      leadForm.classList.add('is-sending');
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = 'Отправляем...';
+      }
+      setStatus('pending', 'Отправляем заявку...');
+
+      try {
+        const response = await fetch('/api/lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok) {
+          if (result.code === 'NO_DELIVERY_CHANNELS') {
+            mailtoFallback(data);
+          }
+          throw new Error(result.error || 'Не удалось отправить заявку.');
+        }
+
+        window.location.href = 'thanks.html';
+      } catch (error) {
+        setStatus('error', error.message || 'Не удалось отправить заявку. Напишите в Telegram @ilhom_upgrade.');
+        leadForm.classList.remove('is-sending');
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.innerHTML = originalButtonHtml;
+        }
+      }
     });
   }
 })();

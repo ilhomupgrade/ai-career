@@ -119,6 +119,7 @@ h3.display { font-size: clamp(24px, 2.4vw, 34px); line-height: 1; }
 .btn--ghost:hover { border-color: var(--lime); color: var(--lime); transform: translateY(-2px); }
 .btn--dark { background: var(--lime-ink); color: var(--ink); }
 .btn--dark:hover { transform: translateY(-2px); }
+.btn:disabled { cursor: wait; opacity: .72; transform: none; box-shadow: none; }
 
 /* ---------- Cards ---------- */
 .card {
@@ -194,6 +195,26 @@ h3.display { font-size: clamp(24px, 2.4vw, 34px); line-height: 1; }
 }
 .lead__note a {
   color: var(--lime);
+}
+.lead__status {
+  min-height: 20px;
+  color: var(--ink-faint);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.lead__status[data-state="pending"] {
+  color: var(--ink-dim);
+}
+.lead__status[data-state="error"] {
+  color: #ffb4a8;
+}
+.lead__honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* ---------- Document pages ---------- */

@@ -6,19 +6,19 @@
 <title>Искусственный интеллект для карьеры 2026 — Upgrade</title>
 <meta name="description" content="Онлайн-курс Upgrade: за 6 недель освоите ИИ-инструменты для карьеры, работы, контента и бизнеса. Практика, поддержка наставника и удостоверение о повышении квалификации." />
 <meta name="theme-color" content="#0B0D0A" />
-<link rel="canonical" href="https://ai-career-ilhom-sultanovs-projects.vercel.app/" />
+<link rel="canonical" href="https://weupgrade.ru/" />
 <meta property="og:title" content="Искусственный интеллект для карьеры 2026 — Upgrade" />
 <meta property="og:description" content="Практический курс по ИИ-инструментам для специалистов, руководителей, фрилансеров и предпринимателей." />
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="ru_RU" />
-<meta property="og:url" content="https://ai-career-ilhom-sultanovs-projects.vercel.app/" />
+<meta property="og:url" content="https://weupgrade.ru/" />
 <meta property="og:site_name" content="Upgrade" />
-<meta property="og:image" content="https://ai-career-ilhom-sultanovs-projects.vercel.app/assets/training-audience.jpg" />
+<meta property="og:image" content="https://weupgrade.ru/assets/training-audience.jpg" />
 <meta property="og:image:alt" content="Выступление Upgrade по искусственному интеллекту" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Искусственный интеллект для карьеры 2026 — Upgrade" />
 <meta name="twitter:description" content="За 6 недель освоите ИИ-инструменты для карьеры. Практика, наставник, удостоверение в госреестре." />
-<meta name="twitter:image" content="https://ai-career-ilhom-sultanovs-projects.vercel.app/assets/training-audience.jpg" />
+<meta name="twitter:image" content="https://weupgrade.ru/assets/training-audience.jpg" />
 <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9IiMwQjBEMEEiLz4KICA8Y2lyY2xlIGN4PSIxOSIgY3k9IjE5IiByPSI2IiBmaWxsPSIjQzdGOTJFIi8+CiAgPHBhdGggZmlsbD0iI0YzRjZFQyIgZD0iTTE4LjcgNDUgMjkuMyAxN2g2LjJMNDYgNDVoLTYuN2wtMi01LjlIMjcuMkwyNS4zIDQ1aC02LjZabTEwLjEtMTFoNi44bC0zLjQtMTAuMUwyOC44IDM0WiIvPgo8L3N2Zz4K" type="image/svg+xml" />
 <script type="application/ld+json">
 {
@@ -27,11 +27,11 @@
   "name": "Искусственный интеллект для карьеры 2026",
   "description": "Онлайн-курс Upgrade: за 6 недель освоите ИИ-инструменты для карьеры, работы, контента и бизнеса. Практика, поддержка наставника и удостоверение о повышении квалификации с внесением в государственный реестр.",
   "inLanguage": "ru",
-  "url": "https://ai-career-ilhom-sultanovs-projects.vercel.app/",
+  "url": "https://weupgrade.ru/",
   "provider": {
     "@type": "Organization",
     "name": "Upgrade",
-    "url": "https://upgrade-agency.ru"
+    "url": "https://weupgrade.ru"
   },
   "hasCourseInstance": [
     {
@@ -176,6 +176,7 @@ h3.display { font-size: clamp(24px, 2.4vw, 34px); line-height: 1; }
 .btn--ghost:hover { border-color: var(--lime); color: var(--lime); transform: translateY(-2px); }
 .btn--dark { background: var(--lime-ink); color: var(--ink); }
 .btn--dark:hover { transform: translateY(-2px); }
+.btn:disabled { cursor: wait; opacity: .72; transform: none; box-shadow: none; }
 
 /* ---------- Cards ---------- */
 .card {
@@ -251,6 +252,26 @@ h3.display { font-size: clamp(24px, 2.4vw, 34px); line-height: 1; }
 }
 .lead__note a {
   color: var(--lime);
+}
+.lead__status {
+  min-height: 20px;
+  color: var(--ink-faint);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.lead__status[data-state="pending"] {
+  color: var(--ink-dim);
+}
+.lead__status[data-state="error"] {
+  color: #ffb4a8;
+}
+.lead__honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* ---------- Document pages ---------- */
@@ -1249,6 +1270,10 @@ body.menu-open { overflow: hidden; }
       <p>Напишите, чем занимаетесь и какой результат хотите получить. Ответим в Telegram или по указанному контакту и подскажем, какой формат подойдёт.</p>
     </div>
     <form class="lead__form reveal" data-d="1" data-lead-form>
+      <label class="lead__honeypot" aria-hidden="true">
+        <span>Компания</span>
+        <input name="company" type="text" tabindex="-1" autocomplete="off" />
+      </label>
       <label>
         <span>Имя</span>
         <input name="name" type="text" autocomplete="name" required />
@@ -1272,7 +1297,8 @@ body.menu-open { overflow: hidden; }
       <button class="btn btn--lime" type="submit">Отправить заявку
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </button>
-      <p class="lead__note">Форма откроет письмо на upgrade-hmao@yandex.ru. Можно также написать напрямую в Telegram: <a href="https://t.me/ilhom_upgrade" target="_blank" rel="noopener">@ilhom_upgrade</a>.</p>
+      <p class="lead__status" data-lead-status aria-live="polite"></p>
+      <p class="lead__note">Заявка отправляется напрямую команде Upgrade. Можно также написать в Telegram: <a href="https://t.me/ilhom_upgrade" target="_blank" rel="noopener">@ilhom_upgrade</a>.</p>
     </form>
   </div>
 </section>
@@ -1302,7 +1328,7 @@ body.menu-open { overflow: hidden; }
       <div class="footer__col">
         <h5>Контакты</h5>
         <a href="https://t.me/ilhom_upgrade" target="_blank" rel="noopener">Telegram: @ilhom_upgrade</a>
-        <a href="https://upgrade-agency.ru" target="_blank" rel="noopener">upgrade-agency.ru</a>
+        <a href="https://weupgrade.ru" target="_blank" rel="noopener">weupgrade.ru</a>
         <a href="tel:+79097121456">+7 909 712 14 56</a>
         <a href="mailto:upgrade-hmao@yandex.ru">upgrade-hmao@yandex.ru</a>
       </div>
