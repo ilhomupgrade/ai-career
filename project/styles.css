@@ -1000,6 +1000,149 @@ h3.display { font-size: clamp(24px, 2.4vw, 34px); line-height: 1; }
 .re-footer a:hover {
   color: var(--re-accent);
 }
+
+/* ---------- Results / proof ---------- */
+.re-results-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.re-result {
+  border: 1px solid var(--re-line);
+  border-radius: var(--re-radius);
+  background: rgba(20,25,20,.82);
+  padding: clamp(22px, 2.4vw, 30px);
+  display: flex;
+  flex-direction: column;
+}
+.re-result__metric {
+  font-family: var(--display);
+  font-size: clamp(34px, 4vw, 50px);
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--re-accent);
+  margin-bottom: 12px;
+}
+.re-result__label {
+  color: var(--re-ink);
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+.re-result p {
+  color: var(--re-muted);
+  font-size: 15px;
+  line-height: 1.55;
+}
+.re-result__tag {
+  margin-top: auto;
+  padding-top: 18px;
+  color: var(--re-faint);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* ---------- Lead magnet ---------- */
+.re-magnet .re-shell {
+  border: 1px solid var(--re-line-strong);
+  border-radius: var(--re-radius);
+  background: linear-gradient(120deg, rgba(199,249,46,.12), rgba(20,25,20,.9));
+  padding: clamp(28px, 4vw, 48px);
+  display: grid;
+  grid-template-columns: 1.3fr .7fr;
+  gap: clamp(20px, 3vw, 40px);
+  align-items: center;
+}
+.re-magnet h2 {
+  font-size: clamp(26px, 3.2vw, 40px);
+  line-height: 1.05;
+  letter-spacing: 0;
+  margin-bottom: 12px;
+}
+.re-magnet p {
+  color: var(--re-muted);
+  font-size: 17px;
+  line-height: 1.55;
+}
+.re-magnet__cta {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ---------- Team bios ---------- */
+.re-team__photos .re-person {
+  width: min(42vw, 230px);
+  text-align: center;
+}
+.re-team__photos .re-person img {
+  width: 100%;
+}
+.re-person span {
+  display: block;
+  color: var(--re-accent);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-top: 12px;
+}
+.re-person strong {
+  display: block;
+  font-family: var(--display);
+  color: var(--re-ink);
+  font-size: 16px;
+  letter-spacing: 0;
+  margin-top: 4px;
+}
+.re-person small {
+  display: block;
+  color: var(--re-muted);
+  font-size: 13px;
+  line-height: 1.5;
+  margin-top: 6px;
+}
+
+/* ---------- FAQ ---------- */
+.re-faq-grid {
+  display: grid;
+  gap: 12px;
+  max-width: 860px;
+}
+.re-faq__item {
+  border: 1px solid var(--re-line);
+  border-radius: var(--re-radius);
+  background: rgba(20,25,20,.82);
+  padding: 0 22px;
+}
+.re-faq__item summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 20px 0;
+  font-family: var(--display);
+  font-size: 18px;
+  line-height: 1.25;
+  letter-spacing: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+}
+.re-faq__item summary::-webkit-details-marker { display: none; }
+.re-faq__item summary::after {
+  content: "+";
+  color: var(--re-accent);
+  font-size: 26px;
+  line-height: 1;
+  flex: none;
+}
+.re-faq__item[open] summary::after { content: "\2013"; }
+.re-faq__item p {
+  color: var(--re-muted);
+  font-size: 16px;
+  line-height: 1.6;
+  padding: 0 0 22px;
+  margin: 0;
+}
+
 .realty-page * {
   letter-spacing: 0;
 }
@@ -1037,8 +1180,15 @@ h3.display { font-size: clamp(24px, 2.4vw, 34px); line-height: 1; }
   .re-service-grid,
   .re-demo-grid,
   .re-package-grid,
+  .re-results-grid,
   .re-process__grid {
     grid-template-columns: 1fr;
+  }
+  .re-magnet .re-shell {
+    grid-template-columns: 1fr;
+  }
+  .re-magnet__cta {
+    justify-content: flex-start;
   }
   .re-strip__grid {
     grid-template-columns: repeat(2, 1fr);
