@@ -326,6 +326,84 @@ h3.display { font-size: clamp(24px, 2.4vw, 34px); line-height: 1; }
 .doc-row strong {
   color: var(--lime);
 }
+.doc-grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.doc-kpis {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin: 30px 0 16px;
+}
+.doc-kpi {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+.doc-kpi strong {
+  display: block;
+  font-family: var(--display);
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: 1;
+  letter-spacing: -.03em;
+  margin-bottom: 10px;
+}
+.doc-kpi span {
+  color: var(--ink-dim);
+  font-size: 14px;
+  line-height: 1.45;
+  display: block;
+}
+.doc-band {
+  background: linear-gradient(180deg, rgba(199, 249, 46, 0.08), rgba(199, 249, 46, 0.02));
+  border: 1px solid rgba(199, 249, 46, 0.16);
+  border-radius: var(--radius);
+  padding: clamp(24px, 3vw, 34px);
+  margin: 34px 0;
+}
+.doc-band h2,
+.doc-band h3,
+.doc-band strong {
+  color: var(--ink);
+}
+.doc-band p:last-child,
+.doc-band ul:last-child {
+  margin-bottom: 0;
+}
+.doc-checks {
+  list-style: none;
+  display: grid;
+  gap: 12px;
+  margin: 18px 0 0;
+}
+.doc-checks li {
+  margin: 0;
+  padding-left: 28px;
+  position: relative;
+}
+.doc-checks li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--lime);
+}
+.doc-card--accent {
+  background: linear-gradient(180deg, rgba(199, 249, 46, 0.08), rgba(20, 24, 15, 1));
+}
+.doc-price {
+  color: var(--lime);
+  display: block;
+  font-family: var(--display);
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: -.03em;
+  margin: 16px 0 10px;
+}
 
 /* ---------- Reveal animation ---------- */
 @media (prefers-reduced-motion: no-preference) {
@@ -343,9 +421,12 @@ h3.display { font-size: clamp(24px, 2.4vw, 34px); line-height: 1; }
   .grid-3 { grid-template-columns: repeat(2, 1fr); }
   .lead { grid-template-columns: 1fr; }
   .doc-grid { grid-template-columns: 1fr; }
+  .doc-grid--3 { grid-template-columns: 1fr; }
+  .doc-kpis { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 640px) {
   body { font-size: 16px; }
   .grid-2, .grid-3 { grid-template-columns: 1fr; }
   .doc-row { grid-template-columns: 1fr; gap: 6px; }
+  .doc-kpis { grid-template-columns: 1fr; }
 }
