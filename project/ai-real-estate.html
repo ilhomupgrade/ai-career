@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="doc-page">
-<main class="wrap doc">
+<main class="wrap doc doc--wide">
   <a class="doc__back" href="index.html">← На главную</a>
   <h1>AI для недвижимости</h1>
   <p class="doc__lead">Открываем отдельное агентское направление Upgrade для девелоперов, агентств недвижимости и внутренних команд маркетинга. Не продаём “нейросети ради нейросетей”, а собираем прикладные решения под лидогенерацию, контент, аналитику и ежедневные процессы.</p>
@@ -145,6 +145,44 @@
     </article>
   </div>
 
+  <h2>Демонстрационные кейсы</h2>
+  <p>На первых переговорах лучше показывать не “возможности ИИ”, а конкретные рабочие артефакты. Эти три формата можно быстро собрать как демо под одного девелопера, агентство или объект.</p>
+  <div class="doc-grid doc-grid--3">
+    <article class="doc-card doc-demo">
+      <span class="doc-meta">Демо 01</span>
+      <h3>Разбор объекта и конкурентов</h3>
+      <p>Собираем краткий отчёт по локации, конкурентным ЖК, позиционированию, рекламе и сильным офферам на рынке.</p>
+      <strong>Что показать клиенту:</strong>
+      <ul class="doc-checks">
+        <li>таблицу конкурентов;</li>
+        <li>выводы по позиционированию;</li>
+        <li>гипотезы для рекламы и лендинга.</li>
+      </ul>
+    </article>
+    <article class="doc-card doc-demo">
+      <span class="doc-meta">Демо 02</span>
+      <h3>Контент-пакет для объекта</h3>
+      <p>На базе описания объекта собираем объявления, посты, баннерные тезисы, сценарии Reels/Shorts и структуру посадочной страницы.</p>
+      <strong>Что показать клиенту:</strong>
+      <ul class="doc-checks">
+        <li>10 рекламных заголовков;</li>
+        <li>контент-план на 2 недели;</li>
+        <li>промпты для визуалов и видео.</li>
+      </ul>
+    </article>
+    <article class="doc-card doc-demo">
+      <span class="doc-meta">Демо 03</span>
+      <h3>AI-помощник для отдела продаж</h3>
+      <p>Собираем прототип ассистента, который помогает менеджеру отвечать клиентам, готовить подборки и фиксировать типовые возражения.</p>
+      <strong>Что показать клиенту:</strong>
+      <ul class="doc-checks">
+        <li>скрипты ответов;</li>
+        <li>шаблоны follow-up сообщений;</li>
+        <li>базу частых вопросов по объекту.</li>
+      </ul>
+    </article>
+  </div>
+
   <h2>Как мы будем продавать это направление</h2>
   <div class="doc-table">
     <div class="doc-row"><strong>Проблема</strong><div>Команда медленно готовит контент, вручную собирает аналитику и не успевает тестировать больше гипотез без роста штата.</div></div>
@@ -163,11 +201,52 @@
     </ul>
   </div>
 
-  <div class="doc-cta">
-    <h2>Хотите запустить это направление как агентство</h2>
-    <p>Следующий шаг — разобрать ваш текущий опыт, выбрать стартовый оффер и собрать продающую упаковку под рынок недвижимости: страница, презентация, скрипт созвона и первый пилот.</p>
-    <a class="btn" href="index.html#lead">Оставить заявку</a>
+  <div class="doc-lead" id="lead">
+    <div>
+      <span class="doc-meta">Заявка</span>
+      <h2>Разберём задачу в недвижимости</h2>
+      <p>Опишите объект, агентство или отдел, где хотите применить AI. В ответ предложим первый практичный шаг: аудит, пилот или внедрение.</p>
+      <ul class="doc-checks">
+        <li>Без общего разговора “про нейросети” — только прикладная задача.</li>
+        <li>Можно начать с одного объекта, отдела или конкретного процесса.</li>
+        <li>После брифа понятнее станет бюджет, сроки и формат запуска.</li>
+      </ul>
+    </div>
+    <form class="lead__form" data-lead-form>
+      <input name="source" type="hidden" value="ai-real-estate" />
+      <label class="lead__honeypot" aria-hidden="true">
+        <span>Компания</span>
+        <input name="company" type="text" tabindex="-1" autocomplete="off" />
+      </label>
+      <label>
+        <span>Имя</span>
+        <input name="name" type="text" autocomplete="name" required />
+      </label>
+      <label>
+        <span>Телефон или Telegram</span>
+        <input name="contact" type="text" autocomplete="tel" placeholder="@username или +7..." required />
+      </label>
+      <label>
+        <span>Что нужно</span>
+        <select name="format" required>
+          <option value="AI-аудит недвижимости">AI-аудит недвижимости</option>
+          <option value="AI-пилот под объект">AI-пилот под объект</option>
+          <option value="AI-система для отдела">AI-система для отдела</option>
+          <option value="Пока хочу обсудить">Пока хочу обсудить</option>
+        </select>
+      </label>
+      <label>
+        <span>Коротко о задаче</span>
+        <textarea name="message" rows="4" placeholder="Например: девелоперский проект, агентство, отдел продаж, контент для объекта, аналитика конкурентов"></textarea>
+      </label>
+      <button class="btn btn--lime" type="submit">Отправить заявку
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+      <p class="lead__status" data-lead-status aria-live="polite"></p>
+      <p class="lead__note">Заявка отправляется напрямую команде Upgrade. Можно также написать в Telegram: <a href="https://t.me/ilhom_upgrade" target="_blank" rel="noopener">@ilhom_upgrade</a>.</p>
+    </form>
   </div>
 </main>
+<script src="app.js" defer></script>
 </body>
 </html>

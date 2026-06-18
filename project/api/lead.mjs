@@ -16,14 +16,20 @@ const clean = (value) =>
     .trim()
     .slice(0, MAX_FIELD_LENGTH);
 
+const leadTitle = (source) =>
+  source === 'ai-real-estate'
+    ? 'Новая заявка: AI для недвижимости'
+    : 'Новая заявка на курс "ИИ для карьеры 2026"';
+
 const formatLeadText = (lead) =>
   [
-    'Новая заявка на курс "ИИ для карьеры 2026"',
+    leadTitle(lead.source),
     '',
     `Имя: ${lead.name}`,
     `Контакт: ${lead.contact}`,
     `Формат: ${lead.format}`,
     `Задача: ${lead.message || 'не указана'}`,
+    `Источник: ${lead.source || 'site'}`,
     '',
     `Страница: ${lead.page || SITE_URL}`,
     `Дата: ${lead.submittedAt}`,
@@ -85,7 +91,7 @@ const sendEmail = async (lead, text) => {
     body: JSON.stringify({
       from,
       to: [to],
-      subject: 'Заявка на курс ИИ для карьеры 2026',
+      subject: leadTitle(lead.source),
       text,
     }),
   });
@@ -134,6 +140,7 @@ export async function POST(request) {
       contact: clean(payload.contact),
       format: clean(payload.format),
       message: clean(payload.message),
+      source: clean(payload.source),
       page: clean(payload.page),
       referrer: clean(payload.referrer),
       utm: payload.utm && typeof payload.utm === 'object' ? payload.utm : {},

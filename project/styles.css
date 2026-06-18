@@ -225,6 +225,9 @@ h3.display { font-size: clamp(24px, 2.4vw, 34px); line-height: 1; }
   max-width: 860px;
   padding-block: clamp(56px, 8vw, 110px);
 }
+.doc--wide {
+  max-width: 1100px;
+}
 .doc__back {
   color: var(--lime);
   font-weight: 700;
@@ -395,6 +398,10 @@ h3.display { font-size: clamp(24px, 2.4vw, 34px); line-height: 1; }
 .doc-card--accent {
   background: linear-gradient(180deg, rgba(199, 249, 46, 0.08), rgba(20, 24, 15, 1));
 }
+.doc-demo strong {
+  display: block;
+  margin-top: 18px;
+}
 .doc-price {
   color: var(--lime);
   display: block;
@@ -403,6 +410,23 @@ h3.display { font-size: clamp(24px, 2.4vw, 34px); line-height: 1; }
   line-height: 1;
   letter-spacing: -.03em;
   margin: 16px 0 10px;
+}
+.doc-lead {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: clamp(24px, 4vw, 44px);
+  align-items: start;
+  background: linear-gradient(180deg, rgba(199, 249, 46, 0.10), rgba(199, 249, 46, 0.03));
+  border: 1px solid rgba(199, 249, 46, 0.18);
+  border-radius: var(--radius);
+  padding: clamp(24px, 3.2vw, 40px);
+  margin-top: 42px;
+}
+.doc-lead h2 {
+  margin-top: 0;
+}
+.doc-lead .lead__form {
+  background: rgba(11, 13, 10, 0.74);
 }
 
 /* ---------- Reveal animation ---------- */
@@ -423,6 +447,7 @@ h3.display { font-size: clamp(24px, 2.4vw, 34px); line-height: 1; }
   .doc-grid { grid-template-columns: 1fr; }
   .doc-grid--3 { grid-template-columns: 1fr; }
   .doc-kpis { grid-template-columns: repeat(2, 1fr); }
+  .doc-lead { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
   body { font-size: 16px; }

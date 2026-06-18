@@ -67,17 +67,24 @@
       status.dataset.state = type;
     };
 
+    const getLeadTitle = (data) =>
+      data.get('source') === 'ai-real-estate'
+        ? 'Новая заявка: AI для недвижимости'
+        : 'Новая заявка на курс «ИИ для карьеры 2026»';
+
     const mailtoFallback = (data) => {
+      const leadTitle = getLeadTitle(data);
       const body = [
-        'Новая заявка на курс «ИИ для карьеры 2026»',
+        leadTitle,
         '',
         `Имя: ${data.get('name') || ''}`,
         `Контакт: ${data.get('contact') || ''}`,
         `Формат: ${data.get('format') || ''}`,
         `Задача: ${data.get('message') || ''}`,
+        `Источник: ${data.get('source') || 'site'}`,
       ].join('\n');
 
-      const subject = encodeURIComponent('Заявка на курс ИИ для карьеры 2026');
+      const subject = encodeURIComponent(leadTitle);
       const mailBody = encodeURIComponent(body);
       window.open(`mailto:upgrade-hmao@yandex.ru?subject=${subject}&body=${mailBody}`, '_blank');
     };
